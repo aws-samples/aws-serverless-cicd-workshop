@@ -1,0 +1,40 @@
+RelativeURLs=true
+CanonifyURLs=true
+languageCode = "en-US"
+defaultContentLanguage = "en"
+
+title = "CI/CD for Serverless Applications"
+theme = "learn"
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+
+uglyurls = true
+sectionPagesMenu = "main"
+pygmentsCodeFences = true
+pygmentsStyle = "monokai"
+
+[params]
+  editURL = "https://github.com/aws-samples/serverless-workshops"
+  description = "Building a CI/CD pipeline for Serverless applications"
+  author = "Fernando Dingler <fdingler@amazon.com>"
+  disableBreadcrumb = false
+  disableNextPrev = false
+  themeVariant = "aws"
+  disableSearch = false
+  disableAssetsBusting = true
+  disableLanguageSwitchingButton = false
+  disableShortcutsTitle = true
+  disableInlineCopyToClipBoard = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[blackfriday]
+plainIDAnchors = true
+hrefTargetBlank = true
+
+[Languages]
+[Languages.en]
+title = ""
+weight = 1
+languageName = "English"
