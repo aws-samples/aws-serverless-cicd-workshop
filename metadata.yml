@@ -1,0 +1,32 @@
+#name - DNS-friendly name for the workshop. This will be used when generating the hosting URL (ie. https://my-first-workshop.workshops.aws/)
+name: ci-cd-for-serverless-apps
+#title - The title of your workshop
+title: CI/CD for Serverless Applications
+#description - A short description that will be displayed in search results
+description: In this workshop, you will learn how to start a new Serverless application from scratch using the AWS Serverless Application Model (AWS SAM) and how to fully automate builds and deployments by building a continous delivery pipeline using AWS CodeCommit, AWS CodeBuild and AWS CodePipeline. You will also learn how to test a Serverless application locally using the SAM CLI.
+#categories - Refer to official AWS categories covered by the workshop content here
+categories: 
+  - Serverless
+  - Lambda
+  - Continous Delivery
+  - Automation
+  - SAM
+#services - Refer to the official AWS service names covered by the workshop content here
+services: 
+   - API Gateway
+   - Lambda
+   - CodePipeline
+   - CodeCommit
+   - CodeBuild
+   - CloudFormation
+#level - Approximate skill level needed for this workshop
+level: 300 
+#duration - Estimated duration in minutes
+duration: 120 
+#cost - Cost in USD. If the content is offered without cost, enter 0
+cost: 0 
+#author - Amazon alias of the primary author of the content
+author: fdingler 
+#audience - Names of the personas associated with this workshop
+audience: 
+  - Developer

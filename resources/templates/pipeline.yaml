@@ -1,0 +1,327 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  Pipeline for a Serverless SAM application
+
+Metadata: 
+  AWS::CloudFormation::Interface: 
+    ParameterGroups: 
+      - 
+        Label: 
+          default: "Source Code Configuration"
+        Parameters: 
+          - SourceCodeProvider
+          - CodeCommitRepoName
+          - CodeCommitBranch
+      - 
+        Label: 
+          default: "Build Configuration"
+        Parameters: 
+          - ComputeType
+          - EnvironmentType
+      - 
+        Label: 
+          default: "Deploy Configuration"
+        Parameters: 
+          - DeployStackName
+          - DeployParameterOverrides
+
+Outputs:
+  ArtifactsBucketArn:
+    Value: !GetAtt Artifacts.Arn
+  ArtifactsBucketName:
+    Value: !Ref Artifacts
+  PipelineName:
+    Value: !Ref Pipeline
+  PipelineVersion:
+    Value: !GetAtt Pipeline.Version
+
+Parameters:
+  ComputeType:
+    AllowedValues:
+      - BUILD_GENERAL1_SMALL
+      - BUILD_GENERAL1_MEDIUM
+      - BUILD_GENERAL1_LARGE
+    Default: BUILD_GENERAL1_SMALL
+    Description: AWS CodeBuild project compute type.
+    Type: String
+  EnvironmentType:
+    AllowedValues:
+      - LINUX_CONTAINER
+      - WINDOWS_CONTAINER
+    Default: LINUX_CONTAINER
+    Description: Environment type used by AWS CodeBuild. See the documentation for details (https://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html#create-project-cli).
+    Type: String
+  SourceCodeProvider:
+    Type: String
+    Description: Location of your source code repository
+    Default: CodeCommit
+    AllowedValues:
+      - CodeCommit
+  CodeCommitRepoName:
+    Type: String
+    Description: CodeCommit repository name, only specify if you chose CodeCommit in SourceCodeProvider
+    Default: 'sam-app'
+  CodeCommitBranch:
+    Type: String
+    Description: CodeCommit repository branch name, only specify if you chose CodeCommit in SourceCodeProvider.
+    Default: master
+  DeployParameterOverrides:
+    Description: Parameter overrides for the deploy stage
+    Type: String
+    Default: '{}'
+  DeployStackName:
+    Description: The stack name for the deploy stage
+    Type: String
+    Default: 'sam-app'
+
+Conditions:
+  UseCodeCommit:
+    !Equals [!Ref SourceCodeProvider, 'CodeCommit']
+
+Rules:
+  ValidateCodeCommit:
+    RuleCondition: !Equals [!Ref SourceCodeProvider, 'CodeCommit']
+    Assertions:
+      - Assert: !Not [!Equals [!Ref CodeCommitRepoName, '']]
+        AssertDescription: "CodeCommitRepoName must be specified when SourceCodeProvider is CodeCommit"
+      - Assert: !Not [!Equals [!Ref CodeCommitBranch, '']]
+        AssertDescription: "CodeCommitBranch must be specified when SourceCodeProvider is CodeCommit"
+
+Resources:
+  Artifacts:
+    Type: AWS::S3::Bucket
+    Properties:
+      LifecycleConfiguration:
+        Rules:
+          - ExpirationInDays: 30
+            Status: Enabled
+
+  Pipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Location: !Ref Artifacts
+        Type: S3
+      RoleArn: !GetAtt PipelineRole.Arn
+      Stages:
+        - Name: Source
+          Actions:
+            - !If
+              - UseCodeCommit
+              - Name: CodeCommitSource
+                ActionTypeId:
+                  Category: Source
+                  Owner: AWS
+                  Provider: CodeCommit
+                  Version: "1"
+                Configuration:
+                  RepositoryName: !Ref CodeCommitRepoName
+                  BranchName: !Ref CodeCommitBranch
+                OutputArtifacts:
+                  - Name: SourceArtifact
+              - !Ref AWS::NoValue
+        
+        - Name: Build
+          Actions:
+            - Name: Build
+              ActionTypeId:
+                Category: Build
+                Owner: AWS
+                Provider: CodeBuild
+                Version: "1"
+              Configuration:
+                ProjectName: !Ref BuildProject
+              InputArtifacts:
+                - Name: SourceArtifact
+              OutputArtifacts:
+                - Name: BuildArtifact
+        
+        - Name: Dev
+          Actions:
+            - Name: CreateChangeSet
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              InputArtifacts:
+                - Name: BuildArtifact
+              Configuration:
+                ActionMode: CHANGE_SET_REPLACE
+                Capabilities: CAPABILITY_IAM,CAPABILITY_AUTO_EXPAND
+                ParameterOverrides: !Ref DeployParameterOverrides
+                RoleArn: !GetAtt DeploymentRole.Arn
+                StackName: !Ref DeployStackName
+                TemplatePath: "BuildArtifact::packaged.yaml"
+                ChangeSetName: !Sub a-${DeployStackName}-Deploy
+              RunOrder: 1
+            - Name: ExecuteChangeSet
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: '1'
+              Configuration:
+                ActionMode: CHANGE_SET_EXECUTE
+                StackName: !Ref DeployStackName
+                ChangeSetName: !Sub a-${DeployStackName}-Deploy
+              RunOrder: 2
+  PipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: !Sub "Used by CodePipeline. Created by CloudFormation ${AWS::StackId}"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - "codepipeline.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Policies:
+        - PolicyName: s3-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:DeleteObject"
+                  - "s3:GetObject"
+                  - "s3:GetObjectVersion"
+                  - "s3:PutObject"
+                Resource:
+                  - !Sub arn:${AWS::Partition}:s3:::${Artifacts}/*
+              - Effect: Allow
+                Action:
+                  - "s3:ListBucket"
+                  - "s3:GetBucketPolicy"
+                Resource:
+                  - !Sub arn:${AWS::Partition}:s3:::${Artifacts}
+        - PolicyName: codebuild-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "codebuild:StartBuild"
+                  - "codebuild:BatchGetBuilds"
+                Resource:
+                  - !GetAtt BuildProject.Arn
+        
+        - PolicyName: deploy-cloudformation-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "cloudformation:DescribeStacks"
+                  - "cloudformation:CreateChangeSet"
+                  - "cloudformation:ExecuteChangeSet"
+                  - "cloudformation:DescribeChangeSet"
+                  - "cloudformation:DeleteChangeSet"
+                Resource:
+                  - !Sub arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${DeployStackName}/*
+
+        - PolicyName: deploy-iam-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "iam:PassRole"
+                Resource:
+                  - !GetAtt DeploymentRole.Arn
+
+        - !If
+          - UseCodeCommit
+          - PolicyName: codecommit-access
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "codecommit:ListBranches"
+                    - "codecommit:GetBranch"
+                    - "codecommit:GetCommit"
+                    - "codecommit:GetUploadArchiveStatus"
+                    - "codecommit:GitPull"
+                    - "codecommit:UploadArchive"
+                    - "codecommit:CancelUploadArchive"
+                  Resource:
+                    - !Sub arn:${AWS::Partition}:codecommit:${AWS::Region}:${AWS::AccountId}:${CodeCommitRepoName}
+          - !Ref AWS::NoValue
+  BuildProject:
+    Type: AWS::CodeBuild::Project
+    Properties:
+      ServiceRole: !GetAtt BuildProjectRole.Arn
+      Source:
+        Type: CODEPIPELINE
+      Artifacts:
+        Type: CODEPIPELINE
+      Environment:
+        ComputeType: !Ref ComputeType
+        Image: 'aws/codebuild/amazonlinux2-x86_64-standard:1.0'
+        Type: !Ref EnvironmentType
+        EnvironmentVariables:
+          - Name: PACKAGE_BUCKET
+            Value: !Ref Artifacts
+
+  CodeBuildPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: !Sub codebuild-access-${AWS::StackName}
+      Roles:
+        - !Ref BuildProjectRole
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Effect: Allow
+            Resource:
+              - !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*
+          - Action:
+              - s3:PutObject
+              - s3:GetObject
+              - s3:GetObjectVersion
+            Effect: Allow
+            Resource:
+              - !Sub arn:${AWS::Partition}:s3:::${Artifacts}/*
+          - Action:
+              - s3:ListBucket
+            Effect: Allow
+            Resource:
+              - !Sub arn:${AWS::Partition}:s3:::${Artifacts}
+  BuildProjectRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: !Sub "Used in CodeBuild project. Created by stack ${AWS::StackId}"
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - codebuild.amazonaws.com
+        Version: '2012-10-17'
+      Path: /service-role/
+
+  DeploymentRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: !Sub "Used by CloudFormation. Created by stack ${AWS::StackId}"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - "cloudformation.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
