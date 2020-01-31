@@ -1,11 +1,10 @@
-## My Project
+## CI/CD for Serverless Applications Workshop
 
-TODO: Fill this README out!
+In this workshop, you will learn how to start a new Serverless application from scratch using the AWS Serverless Application Model (AWS SAM) and how to fully automate builds and deployments by building a continous delivery pipeline using AWS CodeCommit, AWS CodeBuild and AWS CodePipeline. You will also learn how to test a Serverless application locally using the SAM CLI.
 
-Be sure to:
+## Getting Started
 
-* Change the title in this README
-* Edit your repository description on GitHub
+[https://cicd.serverlessworkshops.io](https://cicd.serverlessworkshops.io)
 
 ## License
 
