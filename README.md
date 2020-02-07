@@ -8,6 +8,10 @@ In this workshop, you will learn how to start a new Serverless application from 
 
 [https://cicd.serverlessworkshops.io](https://cicd.serverlessworkshops.io)
 
+## Want to contribute?
+
+Check our [contribution guidelines](CONTRIBUTING.md) before submitting a pull request. Any contribution must be done to the `dev` branch.
+
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.

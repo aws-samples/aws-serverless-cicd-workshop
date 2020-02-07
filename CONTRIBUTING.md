@@ -19,25 +19,27 @@ reported the issue. Please try to include as much information as you can. Detail
 * Any modifications you've made relevant to the bug
 * Anything unusual about your environment or deployment
 
-## Running this website locally
-If you are interested in contributing with content, you can run the workshop website in your local computer using the [Hugo CLI](https://gohugo.io/getting-started/installing/). 
+## Contributing via Pull Requests
+Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that you are working against the latest source on the `dev` branch. 
+
+### Run project locally
+The static website is built using Hugo and to run it locally you need to install the [Hugo CLI](https://gohugo.io/getting-started/installing/). 
 
 1. Clone this repository. 
 2. Switch to the _dev_ branch. (`git checkout dev`).
 3. Run `hugo serve` from within the _workshop_ folder. 
 
-## Contributing via Pull Requests
-Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that:
+Please keep in mind the following before sending a pull request.
 
-1. You are working against the latest source on the `dev` branch.
-2. You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
-3. You open an issue to discuss any significant work - we would hate for your time to be wasted.
+- You are working against the latest source on the `dev` branch.
+- You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
+- You open an issue to discuss any significant work - we would hate for your time to be wasted.
 
 To send us a pull request, please:
 
 1. Fork the repository.
 2. Modify the source; please focus on the specific change you are contributing. If you also reformat all the code, it will be hard for us to focus on your change.
-3. Ensure local tests pass.
+3. Ensure you test locally using Hugo CLI.
 4. Commit to your fork using clear commit messages.
 5. Send us a pull request, answering any default questions in the pull request interface.
 6. Pay attention to any automated CI failures reported in the pull request, and stay involved in the conversation.
