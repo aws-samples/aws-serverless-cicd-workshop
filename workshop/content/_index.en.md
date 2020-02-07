@@ -9,6 +9,10 @@ In this workshop, you will learn how to start a new Serverless application from 
 
 ![Intro](/images/intro.png)
 
-{{% button href="mailto:fdingler@amazon.com" icon="fas fa-bug" %}}Report an issue{{% /button %}}
-{{% button href="mailto:aws-sa-customer-engagements@amazon.com" icon="fas fa-envelope" %}}Contact Event Outfitters{{% /button %}}
+### Issues, Comments, Feedback?
+
+I’m open source! If you see an issue, want to contribute content, or have overall feedback please open an issue or pull request in our GitHub repository: [github.com/aws-samples/aws-serverless-cicd-workshop](https://github.com/aws-samples/aws-serverless-cicd-workshop).
+
+
+{{% button href="https://github.com/aws-samples/aws-serverless-cicd-workshop/issues" icon="fas fa-bug" %}}Report an issue{{% /button %}}
 {{% button href="https://aws.amazon.com/serverless/developer-tools" icon="fas fa-graduation-cap" %}}Learn more{{% /button %}}
