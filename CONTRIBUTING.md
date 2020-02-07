@@ -19,19 +19,28 @@ reported the issue. Please try to include as much information as you can. Detail
 * Any modifications you've made relevant to the bug
 * Anything unusual about your environment or deployment
 
-
 ## Contributing via Pull Requests
-Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that:
+Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that you are working against the latest source on the `dev` branch. 
 
-1. You are working against the latest source on the *master* branch.
-2. You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
-3. You open an issue to discuss any significant work - we would hate for your time to be wasted.
+### Run project locally
+The static website is built using Hugo and to run it locally you need to install the [Hugo CLI](https://gohugo.io/getting-started/installing/). 
+
+1. Clone this repository. 
+2. Switch to the _dev_ branch. (`git checkout dev`).
+3. Download the Learn theme by running `git clone https://github.com/matcornic/hugo-theme-learn.git workshop/themes/learn` from within the root of the project.
+4. Run `hugo serve` from within the _workshop_ folder. 
+
+Please keep in mind the following before sending a pull request.
+
+- You are working against the latest source on the `dev` branch.
+- You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
+- You open an issue to discuss any significant work - we would hate for your time to be wasted.
 
 To send us a pull request, please:
 
 1. Fork the repository.
 2. Modify the source; please focus on the specific change you are contributing. If you also reformat all the code, it will be hard for us to focus on your change.
-3. Ensure local tests pass.
+3. Ensure you test locally using Hugo CLI.
 4. Commit to your fork using clear commit messages.
 5. Send us a pull request, answering any default questions in the pull request interface.
 6. Pay attention to any automated CI failures reported in the pull request, and stay involved in the conversation.
