@@ -27,7 +27,8 @@ The static website is built using Hugo and to run it locally you need to install
 
 1. Clone this repository. 
 2. Switch to the _dev_ branch. (`git checkout dev`).
-3. Run `hugo serve` from within the _workshop_ folder. 
+3. Download the Learn theme by running `git clone https://github.com/matcornic/hugo-theme-learn.git workshop/themes/learn` from within the root of the project.
+4. Run `hugo serve` from within the _workshop_ folder. 
 
 Please keep in mind the following before sending a pull request.
 
