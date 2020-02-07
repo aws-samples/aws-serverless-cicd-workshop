@@ -19,11 +19,17 @@ reported the issue. Please try to include as much information as you can. Detail
 * Any modifications you've made relevant to the bug
 * Anything unusual about your environment or deployment
 
+## Running this website locally
+If you are interested in contributing with content, you can run the workshop website in your local computer using the [Hugo CLI](https://gohugo.io/getting-started/installing/). 
+
+1. Clone this repository. 
+2. Switch to the _dev_ branch. (`git checkout dev`).
+3. Run `hugo serve` from within the _workshop_ folder. 
 
 ## Contributing via Pull Requests
 Contributions via pull requests are much appreciated. Before sending us a pull request, please ensure that:
 
-1. You are working against the latest source on the *master* branch.
+1. You are working against the latest source on the `dev` branch.
 2. You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
 3. You open an issue to discuss any significant work - we would hate for your time to be wasted.
 
