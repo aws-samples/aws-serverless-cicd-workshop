@@ -6,16 +6,13 @@ weight = 50
 
 <hr>
 
-#### **Thank you for attending this workshop!**
+#### **Thank you for doing this workshop!**
 #### We hope you learned something. 
-#### Please complete the session survey in the mobile app.
 
 <hr>
 
-#### Stay tuned on this website, we are working on new modules!
-
-#### Coming soon: 
-#### Module 6. Cross-Account Deployments
-#### Module 7. Cross-Region Deployments
+#### Stay tuned on this website as we are working on new modules!
+#### If you have a suggestion or feedback to improve this workshop,
+#### please let us know in our [GitHub repository](https://github.com/aws-samples/aws-serverless-cicd-workshop).
 
 <hr>
