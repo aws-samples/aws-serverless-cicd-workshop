@@ -251,6 +251,7 @@ Resources:
                   Resource:
                     - !Sub arn:${AWS::Partition}:codecommit:${AWS::Region}:${AWS::AccountId}:${CodeCommitRepoName}
           - !Ref AWS::NoValue
+
   BuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
@@ -261,7 +262,7 @@ Resources:
         Type: CODEPIPELINE
       Environment:
         ComputeType: !Ref ComputeType
-        Image: 'aws/codebuild/amazonlinux2-x86_64-standard:1.0'
+        Image: 'aws/codebuild/amazonlinux2-x86_64-standard:2.0'
         Type: !Ref EnvironmentType
         EnvironmentVariables:
           - Name: PACKAGE_BUCKET
