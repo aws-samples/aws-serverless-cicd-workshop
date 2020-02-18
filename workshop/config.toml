@@ -14,7 +14,7 @@ pygmentsCodeFences = true
 pygmentsStyle = "monokai"
 
 [params]
-  editURL = "https://github.com/aws-samples/serverless-workshops"
+  editURL = "https://github.com/aws-samples/aws-serverless-cicd-workshop/tree/master/workshop/content/"
   description = "Building a CI/CD pipeline for Serverless applications"
   author = "Fernando Dingler <fdingler@amazon.com>"
   disableBreadcrumb = false
