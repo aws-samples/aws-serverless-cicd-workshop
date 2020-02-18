@@ -38,7 +38,7 @@ The source stage is the first step of any pipeline and it points to your source 
 
 The build phase uses AWS CodeBuild as the build provider. But CodePipeline supports other providers like Jenkins, TeamCity or CloudBees. CodeBuild is a great option because you only pay for the time when your build is running, which makes it very cost effective. 
 
-A CodeBuild project has information about the build environment. A build environment represents a combination of operating system (Linux or Windows), compute size (Small, Medium, Large) and a Docker image where the build runs. You can bring your own Docker image or [use the managed images](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) provided by the service. In this case, we are using the managed image for Amazon Linux 2: aws/codebuild/amazonlinux2-x86_64-standard:1.0.
+A CodeBuild project has information about the build environment. A build environment represents a combination of operating system (Linux or Windows), compute size (Small, Medium, Large) and a Docker image where the build runs. You can bring your own Docker image or [use the managed images](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) provided by the service. In this case, we are using the managed image for Amazon Linux 2: aws/codebuild/amazonlinux2-x86_64-standard:2.0.
 
 ![BuildStage](/images/screenshot-pipeline-yaml-build.png)
 
