@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket for CodePipeline artifacts store with KMS Customer Managed Key
+Parameters:
+  ProdAccountNumber:
+    Description: 12-digit AWS account number for production
+    Type: Number
+
+Resources:
+  KMSKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: Used to encrypt artifacts by CodePipeline
+      EnableKeyRotation: true
+      KeyPolicy:
+        Version: "2012-10-17"
+        Id: !Ref AWS::StackName
+        Statement:
+          -
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:root
+            Action:
+              - "kms:Create*"
+              - "kms:Describe*"
+              - "kms:Enable*"
+              - "kms:List*"
+              - "kms:Put*"
+              - "kms:Update*"
+              - "kms:Revoke*"
+              - "kms:Disable*"
+              - "kms:Get*"
+              - "kms:Delete*"
+              - "kms:ScheduleKeyDeletion"
+              - "kms:CancelKeyDeletion"
+            Resource: "*"
+          -
+            Effect: Allow
+            Principal:
+              AWS:
+                - !Sub arn:aws:iam::${ProdAccountNumber}:root
+                - !Sub arn:aws:iam::485020055381:role/service-role/codebuild-sam-app-build-service-role
+            Action:
+              - kms:Encrypt
+              - kms:Decrypt
+              - kms:ReEncrypt*
+              - kms:GenerateDataKey*
+              - kms:DescribeKey
+            Resource: "*"
+
+  KMSAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub alias/codepipeline-crossaccounts
+      TargetKeyId: !Ref KMSKey
+
+  # ArtifactsBucket:
+  #   Type: AWS::S3::Bucket
+  #   DeletionPolicy: Retain
+
+Outputs:
+  CMK:
+    Value: !GetAtt [KMSKey, Arn]
+  # ArtifactsBucket:
+  #   Value: !Ref ArtifactsBucket

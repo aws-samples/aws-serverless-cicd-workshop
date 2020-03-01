@@ -12,5 +12,4 @@ The following diagram illustrates a simple account setup that many customers sta
 
 ![EnvironmentSeparation](/images/environment-separation.png)
 
-As you can tell from the diagram, the Dev account hosts the Code Pipeline, Artifacts Bucket and the Code Repository. The CodePipeline then deploys across the Production account using an [assumed role](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html). 
-
+As you can tell from the diagram, the Dev account hosts the Code Pipeline, Artifacts Bucket and the Code Repository. The CodePipeline then deploys across the Production account using an [assumed role](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).

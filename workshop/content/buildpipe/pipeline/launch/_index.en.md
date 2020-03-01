@@ -4,7 +4,7 @@ date = 2020-01-03T19:29:29-08:00
 weight = 5
 +++
 
-Open the [AWS CloudFormation console]((https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=sam-app-ci-cd)) to launch a new stack and upload the downloaded template by choosing the _Upload a template_ file option.
+Open the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=sam-app-ci-cd) to launch a new stack and upload the downloaded template by choosing the _Upload a template_ file option.
 
 ![PipelineConfiguration](/images/screenshot-pipeline-cfn-1.png)
 

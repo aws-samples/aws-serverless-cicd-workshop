@@ -14,12 +14,12 @@ The diagram above illustrates what happens when CodePipeline begins a deployment
 
 #### Why encrypt the artifacts?
 
-AWS CodePipeline *always* stores artifacts on S3 with encryption enabled and there is no way to disable it. The default behavior is to use the AWS Managed Key to encrypt them, but this approach doesn't work for granting access to S3 buckets across accounts. Therefore you [3] must create a KMS Customer Managed Key and then give the IAM role in the Production account permissions to use it to decrypt the artifacts. 
+AWS CodePipeline *always* stores artifacts on S3 with encryption enabled and there is no way to disable it. The default behavior is to use the AWS Managed Key to encrypt them, but this approach doesn't work for granting access to S3 buckets across accounts. Therefore you [3] must create a KMS Customer Master Key and then give the IAM role in the Production account permissions to use it to decrypt the artifacts. 
 
 #### Additional reading
 
 If you want to dive deeper into the concepts of Cross Account permissions in regards to Code Pipeline, here are a couple of good reads that might help you understand it better: 
 
-[1] https://aws.amazon.com/blogs/devops/aws-building-a-secure-cross-account-continuous-delivery-pipeline  
-[2] https://docs.aws.amazon.com/codepipeline/latest/userguide/pipelines-create-cross-account.html  
-[3] https://aws.amazon.com/premiumsupport/knowledge-center/cross-account-access-denied-error-s3  
+[1] [Building a Secure Cross Account Pipeline](https://aws.amazon.com/blogs/devops/aws-building-a-secure-cross-account-continuous-delivery-pipeline)  
+[2] [AWS Code Pipeline Cross Account Docs](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipelines-create-cross-account.html)  
+[3] [Cross Account Permissions with S3 Buckets](https://aws.amazon.com/premiumsupport/knowledge-center/cross-account-access-denied-error-s3)  
