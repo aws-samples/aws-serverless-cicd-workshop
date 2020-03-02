@@ -59,5 +59,5 @@ Since we already have the CodeCommit repository, we don't need to create a new o
 Also notice how we define an object `sourceOutput` as a pipeline artifact; This is necessary for any files that you want CodePipeline to pass to downstream stages. In this case, we want our source code to be passed to the Build stage.
 
 {{% notice info %}}
-Don't do a `cdk deploy` just yet because you will get an error saying that a Pipeline needs to have at least 2 stages to be created. So, let's continue adding the Build stage in the next page.
+Don't do a `cdk deploy` just yet, because a pipeline needs to have at least 2 stages to be created. Lets continue to the next page to add a Build stage first.
 {{% /notice%}}
