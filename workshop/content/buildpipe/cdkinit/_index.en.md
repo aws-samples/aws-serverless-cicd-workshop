@@ -31,4 +31,9 @@ After a few seconds, our new CDK project should look like this:
 
 ![CdkInit](/images/chapter4/screenshot-cdk-init.png)
 
-The main file that you will be interacting with is the `lib/pipeline-stack.ts`. And the entry point of your CDK project is `bin/pipeline.ts`. For this workshop, don't worry about the rest of the files and folders, although if you are curious, feel free to poke around the project structure. 
+
+### Project structure
+The main files that you will be interacting with are _lib/pipeline-stack.ts_ and _bin/pipeline.ts_. Don't worry about the rest of the files and folders for now. Open the `bin/pipeline.ts` file, which is your entry point to the CDK project, and change the name of the stack to `sam-app-cicd`: 
+
+![CdkEntryPoint](/images/chapter4/screenshot-bin-pipeline-ts.png)
+
