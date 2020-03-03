@@ -4,9 +4,13 @@ date = 2019-11-01T15:26:09-07:00
 weight = 20
 +++
 
-The build stage is where your Serverless application gets built and packaged. We are going to use AWS CodeBuild as the Build provider for our pipeline. It is worth mentioning that CodePipeline also supports other providers like Jenkins, TeamCity or CloudBees. 
+The **Build Stage** is where your Serverless application gets built and packaged by SAM. We are going to use AWS CodeBuild as the Build provider for our pipeline. It is worth mentioning that CodePipeline also supports other providers like Jenkins, TeamCity or CloudBees. 
+
+### Why AWS Code Build?
 
 AWS CodeBuild is a great option because you only pay for the time where your build is running, which makes it very cost effective compared to running a dedicated build server 24 hours a day when you really only build during office hours. It is also container-based which means that you can bring your own Docker container image where your build runs, or [use a managed image](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html) provided by CodeBuild.  
+
+### Add the build stage
 
 Let's go ahead and add a Build stage to our pipeline:
 
@@ -99,7 +103,7 @@ Navigate to the [AWS CodePipeline Console](https://console.aws.amazon.com/codesu
 
 ![VerifyPipeline](/images/chapter4/screenshot-pipeline-verify-1.png)
 
-Oh no! the Build step failed. **Don't worry, this is expected** because we haven't specified what commands to run on the build yet so AWS CodeBuild doesn't know how to build our Serverless application.
+The Build step should have failed. **Don't worry! this is expected** because we haven't specified what commands to run during the build yet, so AWS CodeBuild doesn't know how to build our Serverless application.
 
 ![VerifyPipeline](/images/chapter4/screenshot-pipeline-verify-2.png)
 

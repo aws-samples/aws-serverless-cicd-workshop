@@ -4,7 +4,7 @@ date = 2019-10-04T12:54:48-07:00
 weight = 30
 +++
 
-A buildspec file is a series of commands in YAML format that CodeBuild executes to build your application. This file is placed in the root folder of a SAM application and CodeBuild will automatically find it and run it during build time.
+A **Buildspec File** is a series of commands in YAML format that CodeBuild executes to build your application. This file is placed in the root folder of a SAM application and CodeBuild will automatically find it and run it during build time.
 
 In your Cloud9 editor, create a new file named `buildspec.yml` in the root (top level) of the _sam-app_ directory by right clicking on the `sam-app` folder and selecting New file.
 
@@ -63,9 +63,11 @@ artifacts:
 Take a moment to understand the structure of the file and feel free to read the Buildsec Reference here: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html.
 
 ### Push code changes
+
 Commit your changes and push them to the repository.
 
 ```
+cd ~/environment/sam-app
 git add .
 git commit -m "Added buildspec.yml"
 git push

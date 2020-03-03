@@ -8,6 +8,8 @@ Every Code Pipeline needs an artifacts bucket, also known as Artifact Store. Cod
 
 Let's get started and write the code for creating this bucket:
 
+**Make sure you are editing the file with _.ts_ extension**
+
 ```js
 // lib/pipeline-stack.ts
 
@@ -30,6 +32,10 @@ Easy right? Now build and deploy the project like you did it earlier:
 npm run build
 cdk deploy
 ```
+
+{{% notice info %}}
+If you get a build error, check that all the @aws-cdk dependencies in the package.json file have the same version number, if not, fix it, delete the node_modules folder and run npm install. More info: https://github.com/aws/aws-cdk/issues/542#issuecomment-449694450.
+{{% /notice %}}
 
 The output will show that the S3 bucket got created:
 

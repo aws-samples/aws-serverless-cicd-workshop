@@ -4,7 +4,7 @@ date = 2019-10-04T12:54:48-07:00
 weight = 40
 +++
 
-The deploy stage is where your SAM application and all its resources are created an in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
+The **Deploy Stage** is where your SAM application and all its resources are created an in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
 
 Add the Deploy stage to your pipeline: 
 
@@ -108,11 +108,12 @@ export class PipelineStack extends cdk.Stack {
 On your terminal, run the following commands from within the _pipeline_ directory:
 
 ```
+cd ~/environment/sam-app/pipeline
 npm run build
 cdk deploy
 ```
 
-The CDK CLI might ask you to confirm the changes before deploying, this is because we are giving Admin permissions to the IAM role that deploys our application. This is generally not a bad practice since this role can only be assumed by CloudFormation and not by a human, however, if your organization has a stricter security posture you may want to consider providing a fine grain policy for the deployment role. 
+The CLI might ask you to confirm the changes before deploying, this is because we are giving Admin permissions to the IAM role that deploys our application. This is generally **not** a bad practice since this role can only be assumed by CloudFormation and not by a human, however, if your organization has a stricter security posture you may want to consider creating [a custom IAM deployment role](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-iam.Role.html) with a fine grain policy. 
 
 ### Trigger a release
 

@@ -4,7 +4,7 @@ date = 2019-11-01T15:26:09-07:00
 weight = 22
 +++
 
-Open the file `lib/pipeline-stack.ts` in your Cloud9 workspace. It is empty at the moment, but you will be adding code to describe and build your CI/CD pipeline in the following pages.
+Open the file `lib/pipeline-stack.ts` in your Cloud9 workspace. It is empty at the moment, but here is where you will be adding code to build your CI/CD pipeline.
 
 ![CdkEmptyLib](/images/chapter4/screenshot-cdk-empty.png)
 
