@@ -12,8 +12,37 @@ AWS CodeBuild is a great option because you only pay for the time where your bui
 
 ### Add the build stage
 
-Let's go ahead and add a Build stage to our pipeline:
+Let's go ahead and add a Build stage to you pipeline-stack.ts:
 
+```js
+// Declare build output as artifacts
+const buildOutput = new codepipeline.Artifact();
+
+// Declare a new CodeBuild project
+const buildProject = new codebuild.PipelineProject(this, 'Build', {
+  environment: { buildImage: codebuild.LinuxBuildImage.AMAZON_LINUX_2_2 },
+  environmentVariables: {
+    'PACKAGE_BUCKET': {
+      value: artifactsBucket.bucketName
+    }
+  }
+});
+
+// Add the build stage to our pipeline
+pipeline.addStage({
+  stageName: 'Build',
+  actions: [
+    new codepipeline_actions.CodeBuildAction({
+      actionName: 'Build',
+      project: buildProject,
+      input: sourceOutput,
+      outputs: [buildOutput],
+    }),
+  ],
+});
+```
+
+{{%expand "Click here to see how the entire file should look like" %}}
 ```js
 // lib/pipeline-stack.ts
 
@@ -87,6 +116,7 @@ export class PipelineStack extends cdk.Stack {
   }
 }
 ```
+{{% /expand%}}
 
 ### Deploy the pipeline
 

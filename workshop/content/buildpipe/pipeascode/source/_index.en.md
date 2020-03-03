@@ -6,8 +6,38 @@ weight = 15
 
 The **Source Stage** is the first step of any CI/CD pipeline and it represents your source code. This stage is in charge of triggering the pipeline based on new code changes (i.e. git push or pull requests). In this workshop, we will be using AWS CodeCommit as the source provider, but CodePipeline also supports S3, GitHub and Amazon ECR as source providers.
 
-Let's go ahead and add a Source provider to our pipeline:
+Append the following code snippet after your bucket definition in the **pipeline-stack.ts** file:
 
+```js
+// Import existing CodeCommit sam-app repository
+const codeRepo = codecommit.Repository.fromRepositoryName(
+  this,
+  'AppRepository', // Logical name within CloudFormation
+  'sam-app' // Repository name
+);
+
+// Pipeline creation starts
+const pipeline = new codepipeline.Pipeline(this, 'Pipeline', {
+  artifactBucket: artifactsBucket
+});
+
+// Declare source code as an artifact
+const sourceOutput = new codepipeline.Artifact();
+
+// Add source stage to pipeline
+pipeline.addStage({
+  stageName: 'Source',
+  actions: [
+    new codepipeline_actions.CodeCommitSourceAction({
+      actionName: 'CodeCommit_Source',
+      repository: codeRepo,
+      output: sourceOutput,
+    }),
+  ],
+});
+```
+
+{{%expand "Click here to see how the entire file should look like" %}}
 ```js
 // lib/pipeline-stack.ts
 
@@ -53,6 +83,7 @@ export class PipelineStack extends cdk.Stack {
   }
 }
 ```
+{{% /expand%}}
 
 Since we already have the CodeCommit repository, we don't need to create a new one, we just need to import it using the repository name. 
 

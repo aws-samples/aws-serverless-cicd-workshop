@@ -6,8 +6,32 @@ weight = 40
 
 The **Deploy Stage** is where your SAM application and all its resources are created an in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
 
-Add the Deploy stage to your pipeline: 
+Add the Deploy stage to your pipeline-stack.ts: 
 
+```js
+// Deploy stage
+pipeline.addStage({
+  stageName: 'Dev',
+  actions: [
+    new codepipeline_actions.CloudFormationCreateReplaceChangeSetAction({
+      actionName: 'CreateChangeSet',
+      templatePath: buildOutput.atPath("packaged.yaml"),
+      stackName: 'sam-app',
+      adminPermissions: true,
+      changeSetName: 'sam-app-dev-changeset',
+      runOrder: 1
+    }),
+    new codepipeline_actions.CloudFormationExecuteChangeSetAction({
+      actionName: 'Deploy',
+      stackName: 'sam-app',
+      changeSetName: 'sam-app-dev-changeset',
+      runOrder: 2
+    }),
+  ],
+});
+```
+
+{{%expand "Click here to see how the entire file should look like" %}}
 ```js
 // lib/pipeline-stack.ts
 
@@ -102,6 +126,7 @@ export class PipelineStack extends cdk.Stack {
   }
 }
 ```
+{{% /expand%}}
 
 ### Deploy the pipeline
 

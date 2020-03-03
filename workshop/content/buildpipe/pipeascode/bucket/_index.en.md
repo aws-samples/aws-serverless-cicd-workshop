@@ -8,13 +8,17 @@ Every Code Pipeline needs an artifacts bucket, also known as Artifact Store. Cod
 
 Let's get started and write the code for creating this bucket:
 
-**Make sure you are editing the file with _.ts_ extension**
+**Make sure you are editing the pipeline-stack file with _.ts_ extension**
 
 ```js
 // lib/pipeline-stack.ts
 
 import * as cdk from '@aws-cdk/core';
 import s3 = require('@aws-cdk/aws-s3');
+import codecommit = require('@aws-cdk/aws-codecommit');
+import codepipeline = require('@aws-cdk/aws-codepipeline');
+import codepipeline_actions = require('@aws-cdk/aws-codepipeline-actions');
+import codebuild = require('@aws-cdk/aws-codebuild');
 
 export class PipelineStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
