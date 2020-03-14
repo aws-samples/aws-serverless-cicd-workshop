@@ -38,7 +38,10 @@ pipeline.addStage({
 ```
 
 {{%expand "Click here to see how the entire file should look like" %}}
-```js
+
+The highlighted code is the new addition: 
+
+{{< highlight js "hl_lines=16-41" >}}
 // lib/pipeline-stack.ts
 
 import * as cdk from '@aws-cdk/core';
@@ -82,7 +85,7 @@ export class PipelineStack extends cdk.Stack {
     });
   }
 }
-```
+{{< / highlight >}}
 {{% /expand%}}
 
 Since we already have the CodeCommit repository, we don't need to create a new one, we just need to import it using the repository name. 

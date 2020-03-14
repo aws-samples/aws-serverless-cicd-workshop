@@ -43,7 +43,10 @@ pipeline.addStage({
 ```
 
 {{%expand "Click here to see how the entire file should look like" %}}
-```js
+
+The highlighted code is the new addition: 
+
+{{< highlight js "hl_lines=44-68" >}}
 // lib/pipeline-stack.ts
 
 import * as cdk from '@aws-cdk/core';
@@ -115,7 +118,7 @@ export class PipelineStack extends cdk.Stack {
     
   }
 }
-```
+{{< / highlight >}}
 {{% /expand%}}
 
 ### Deploy the pipeline
