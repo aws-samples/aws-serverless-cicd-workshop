@@ -39,4 +39,4 @@ Run the following command:
 sam --version
 ```
 
-You should see *SAM CLI, version 0.31.1* or greater.
+You should see *SAM CLI, version 0.43.0* or greater.

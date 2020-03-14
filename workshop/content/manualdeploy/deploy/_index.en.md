@@ -4,9 +4,9 @@ date = 2019-10-03T13:33:54-07:00
 weight = 20
 +++
 
-The `sam deploy` command deploys your application by launching a CloudFormation stack. This command now comes with a guided interactive mode, which you can enable by specifying the _--guided_ parameter. It walks you through the parameters required for deployment, provides default options, and saves these options in a configuration file in your project folder.
+The `sam deploy` command deploys your application by launching a CloudFormation stack. This command has a guided interactive mode, which you enable by specifying the _--guided_ parameter. It is recommended to deploy with guided mode for the first time as it will capture the configuration for future deployments.
 
-Run the following command in the same directory level where the _packaged.yaml_ is located:
+Run the following command in the same directory level where the _template.yaml_ is located:
 
 ```
 sam deploy --guided
