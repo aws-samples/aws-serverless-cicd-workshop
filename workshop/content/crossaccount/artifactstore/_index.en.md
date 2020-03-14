@@ -2,6 +2,8 @@
 title = "Creating a KMS Key"
 date = 2019-11-11T14:46:02-08:00
 weight = 30
+draft = true
+hidden = true
 +++
 
 The first thing we are going to do is modify the pipeline [created on Chapter 4](/buildpipe/pipeline.html), to use a symmetric Customer Master Key (CMK) to encrypt artifacts in the bucket. The easiest way to do this is by adding the following CloudFormation snippet at the end of our `pipeline.yml` file: 
