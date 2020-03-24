@@ -15,6 +15,10 @@ $(aws lambda list-functions | jq -r .Functions[0].FunctionName):live \
 response.json
 ```
 
+{{% notice tip %}}
+If you get an error that `jq` command is not installed, you can install it by running `sudo yum install -y jq`.
+{{% /notice%}}
+
 Example: 
 
 ![LambdaInvoke](/images/screenshot-lambda-invoke.png)

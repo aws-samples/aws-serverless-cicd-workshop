@@ -11,7 +11,7 @@ One of the tools this workshop relies on, is the AWS SAM Command Line Interface.
 We have put together a bootstrap script that will make the upgrade easier for you. Download it by running the following command from your Cloud9 terminal. 
 
 ```
-wget https://serverless-cicd-pipeline-artifacts-cn2m0gigrb70.s3.amazonaws.com/bootstrap.sh
+wget https://cicd.serverlessworkshops.io/assets/bootstrap.sh
 ```
 
 Then give it permissions to execute: 
