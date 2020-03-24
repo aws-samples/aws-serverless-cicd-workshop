@@ -1,14 +1,16 @@
 +++
-title = "Write the buildspec file"
+title = "Buildspec file"
 date = 2019-10-04T12:54:48-07:00
 weight = 30
 +++
 
-A buildspec file is a series of commands in YAML format that CodeBuild runs to build your application. 
+A **Buildspec File** is a series of commands in YAML format that CodeBuild executes to build your application. This file is placed in the root folder of a SAM application and CodeBuild will automatically find it and run it during build time.
 
-Create a new file named _buildspec.yml_ in the root of the _sam-app_ directory and copy the following contents into it. **It is very important that the file is placed in the root**, otherwise CodeBuild will not be able to find it.
+In your Cloud9 editor, create a new file named `buildspec.yml` in the root (top level) of the _sam-app_ directory by right clicking on the `sam-app` folder and selecting New file.
 
-In Cloud9, right click on the `sam-app` directory to create a new file. Name it `buildspec.yml`.
+{{% notice tip %}}
+The extension of the file can be either `yml` or `yaml`, CodeBuild will find it either way.
+{{% /notice%}}
 
 ![CreateNewFileCloud9](/images/screenshot-cloud9-new-file.png)
 
@@ -54,15 +56,25 @@ artifacts:
     - packaged.yaml
 ```
 
-**Save the file**. It should look like this (take a moment to understand it):
+**Save the file**. It should look like the following screenshot.
 
-![CreateBuildspec](/images/screenshot-buildspec.png)
+![CreateBuildspec](/images/chapter4/screenshot-buildspec.png)
+
+Take a moment to understand the structure of the file and feel free to read the Buildsec Reference here: https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html.
 
 ### Push code changes
+
 Commit your changes and push them to the repository.
 
 ```
+cd ~/environment/sam-app
 git add .
 git commit -m "Added buildspec.yml"
 git push
 ```
+
+### Verify build succeeds
+
+Navigate to your CodePipeline again, and wait for it to trigger automatically. This time the build will succeed: 
+
+![BuildSucceeds](/images/chapter4/screenshot-build-succeeds.png)
