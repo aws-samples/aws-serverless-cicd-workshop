@@ -16,7 +16,7 @@ response.json
 ```
 
 {{% notice tip %}}
-If you get an error that `jq` command is not installed, you can install it by running `sudo yum install -y jq`.
+If you get an error that `jq` command is not installed, you can install it by running `sudo yum install -y jq` or `brew install jq` if you are using Mac OS.
 {{% /notice%}}
 
 Example: 
