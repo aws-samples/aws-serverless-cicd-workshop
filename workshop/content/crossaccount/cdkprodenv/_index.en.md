@@ -38,6 +38,12 @@ new ProdIAMStack(app, 'sam-app-iam-cross-account', {
 The command `aws sts get-caller-identity` is an easy way to get your AWS Account ID. You can also check here for other forms to find it: https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html.
 {{% /notice%}}
 
-### Configure prod credentials
+### Test deployment
+
+```
+cd ~/environment/sam-app/pipeline
+npm run build
+cdk deploy sam-app-iam-cross-account --profile prod
+```
 
 
