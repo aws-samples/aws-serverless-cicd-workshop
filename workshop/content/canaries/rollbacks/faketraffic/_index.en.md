@@ -10,7 +10,7 @@ In your terminal, run the following command to invoke the Lambda function:
 
 ```
 aws lambda invoke --function-name \
-$(aws lambda list-functions | jq -r .Functions[0].FunctionName):live \
+$(aws lambda list-functions | jq -r -c '.Functions[] | select( .FunctionName | contains("sam-app-HelloWorldFunction")).FunctionName'):live \
 --payload '{}' \
 response.json
 ```
@@ -34,7 +34,7 @@ counter=1
 while [ $counter -le 15 ]
 do
     aws lambda invoke --function-name \
-    $(aws lambda list-functions | jq -r .Functions[0].FunctionName):live \
+    $(aws lambda list-functions | jq -r -c '.Functions[] | select( .FunctionName | contains("sam-app-HelloWorldFunction")).FunctionName'):live \
     --payload '{}' \
     response.json
     sleep 1
