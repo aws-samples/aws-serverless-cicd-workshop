@@ -2,8 +2,8 @@
 title = "Cross account roles"
 date = 2019-11-11T14:46:02-08:00
 weight = 40
-draft = false
-hidden = false
+draft = true
+hidden = true
 +++
 
 Now that we have verified that we can deploy an empty stack to production, lets create the actual cross account roles in the `lib/prod-iam-stack.ts` file we created earlier. Add the following content to the file:

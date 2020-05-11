@@ -2,7 +2,7 @@
 title = "Cross Account Deployments"
 date = 2019-10-02T16:10:44-07:00
 weight = 40
-chapter = true
+chapter = false
 draft = true
 hidden = true
 pre = "<b>6. </b>"

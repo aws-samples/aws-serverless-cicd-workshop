@@ -2,8 +2,8 @@
 title = "How it works"
 date = 2019-11-11T14:46:02-08:00
 weight = 20
-draft = false
-hidden = false
+draft = true
+hidden = true
 +++
 
 Before jumping to the implementation, we need to understand the different pieces that allow Code Pipeline to deploy across a different account. The following diagram shows a zoomed-in view of the services and roles involved in this process. 

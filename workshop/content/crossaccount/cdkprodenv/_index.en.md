@@ -2,8 +2,8 @@
 title = "CDK prod environment"
 date = 2019-11-11T14:46:02-08:00
 weight = 35
-draft = false
-hidden = false
+draft = true
+hidden = true
 +++
 
 Before we define any resources in the stack, we need to configure the CDK project to deploy this stack in the Production account. For this, the CDK has the concept of [Environments](https://docs.aws.amazon.com/cdk/latest/guide/environments.html), which allows you to deploy Stacks in different AWS accounts from within the same CDK project. 

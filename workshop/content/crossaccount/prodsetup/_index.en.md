@@ -2,8 +2,8 @@
 title = "Prod account setup"
 date = 2019-11-11T14:46:02-08:00
 weight = 30
-draft = false
-hidden = false
+draft = true
+hidden = true
 +++
 
 Let's get started creating the necessary IAM roles in the Production account to grant cross account access. We will do this as a separate stack within the same CDK project created in Chapter 4.
