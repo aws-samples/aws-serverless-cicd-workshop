@@ -4,8 +4,11 @@ date = 2019-11-01T15:26:09-07:00
 weight = 21
 +++
 
-First of all, install the CDK CLI by running the following command from your terminal.
+## Install the latest CDK
+
+If you are using Cloud9, the CDK is already pre-installed but it will likely be a few versions old. Run the following commands from the Cloud9 terminal to remove your current version and install the latest one:
 ```
+npm uninstall -g aws-cdk
 npm install -g aws-cdk
 ```
 
