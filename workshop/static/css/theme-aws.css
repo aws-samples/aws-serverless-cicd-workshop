@@ -29,25 +29,24 @@
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-    /* src: url("../webfonts/AmazonEmber_W_Lt.eot"); */
-    /* src: url("../webfonts/AmazonEmber_W_Lt.eot?#iefix") format("embedded-opentype"), url("../webfonts/AmazonEmber_W_Lt.woff2") format("woff2"), url("../webfonts/AmazonEmber_W_Lt.woff") format("woff"); */
+    font-family: 'Amazon Ember';
+    src: url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Lt.eot");
+    src: url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Lt.eot?#iefix") format("embedded-opentype"), url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Lt.woff2") format("woff2"), url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Lt.woff") format("woff");
     font-style: normal;
     font-weight: 200;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    font-family: 'Amazon Ember';
+    src: url("https://fonts.workshops.aws/webfonts/AmazonEmber_W_Bd.eot");
     /* src: url("../webfonts/AmazonEmber_W_Bd.eot"); */
     /* src: url("../webfonts/AmazonEmber_W_Bd.eot?#iefix") format("embedded-opentype"), url("../webfonts/AmazonEmber_W_Bd.woff2") format("woff2"), url("../webfonts/AmazonEmber_Bd_Lt.woff") format("woff"); */
     font-style: bold;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 body {
-    font-family: "Roboto", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: "Amazon Ember", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: var(--MAIN-TEXT-color) !important;
 }
 
@@ -57,13 +56,13 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: "Roboto", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: "Amazon Ember", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: var(--MAIN-TITLES-TEXT-color) !important;
     font-weight: 300;
 }
 
 h1 {
-    font-family: "Roboto", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: "Amazon Ember", "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 }
 
 #chapter h1 {

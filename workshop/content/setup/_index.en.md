@@ -12,7 +12,7 @@ pre = "<b>0. </b>"
 
 In order to complete this workshop, you’ll need access to an AWS account. Your access needs to have sufficient permissions to create resources in IAM, CloudFormation, API Gateway, CodeCommit, CodePipeline, CodeBuild, CodeDeploy and S3. If you currently don't have an AWS account, you can create one here: [https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account).
 
-<hr />
+___
 
 ### Setup using AWS Cloud9 (Recommended)
 
@@ -20,7 +20,7 @@ In order to complete this workshop, you’ll need access to an AWS account. Your
 
 If you want to use Cloud9, follow these instructions: [Create a Cloud9 Workspace](/setup/cloud9.html).
 
-<hr />
+___
 
 ### Setup using my own computer, not using Cloud9
 
