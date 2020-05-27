@@ -12,6 +12,11 @@ npm uninstall -g aws-cdk
 npm install -g aws-cdk
 ```
 
+{{% notice tip %}}
+If the Cloud9 terminal returns an error, use the `--force` flag: `npm install -g aws-cdk --force`
+{{% /notice %}}
+
+
 ### Initialize project
 
 Now, let's create a folder within our _sam-app_ directory where the pipeline code will reside.
