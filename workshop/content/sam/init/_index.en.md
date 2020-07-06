@@ -25,8 +25,8 @@ It will prompt for project configuration parameters:
 #### Type `Y` to accept download from GitHub
 ![samInit](/images/screenshot-sam-init-3.png)
 
-<!-- #### Type `1` to select the `Hello World Example`
-![samInit](/images/screenshot-sam-init-5.png) -->
+#### Type `1` to select the `Hello World Example`
+![samInit](/images/screenshot-sam-init-5.png) 
 
 {{% notice tip %}}
 This command supports cookiecutter templates, so you could write your own custom scaffolding templates and specify them using the location flag, For example: sam init --location git+ssh://git@github.com/aws-samples/cookiecutter-aws-sam-python.git.
