@@ -1,29 +1,35 @@
 +++
-title = "Delete Buckets"
+title = "Delete S3 Buckets"
 date =  2020-07-06T18:06:08-04:00
 weight = 5
 +++
 
-To delete the resources created by the applications, we should empty the S3 buckets and then delete the buckets.
+There are 2 buckets that got created as part of this workshop, one was created by SAM CLI and the other one was created in Chapter 4 by CodePipeline. To delete these buckets, we should empty them first and then proceed to delete them.
 
-Note that if you followed the cleanup section of the modules, some of the commands below might fail because there is nothing to delete and its ok.
+### First Bucket
 
-Delete the Buckets:
+The first bucket to cleanup is the one created by SAM CLI, you can find out the bucket name with the following command:
 
-
-**First Bucket**
-```
-STACK_NAME=aws-sam-cli-managed-default
-BUCKET_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::S3::Bucket") | .PhysicalResourceId')
-aws s3api list-object-versions --bucket $BUCKET_NAME --query 'Versions[].[Key, VersionId]' | jq -r '.[] | "--key '\''" + .[0] + "'\'' --version-id " + .[1]' |  xargs -L1 aws s3api delete-object --bucket $BUCKET_NAME
-aws s3 rb s3://$BUCKET_NAME/ --force
-
-```
-**Second Bucket**
+```bash
+aws cloudformation describe-stack-resources \
+--stack-name aws-sam-cli-managed-default \
+| jq -r '.StackResources[] | select(.ResourceType=="AWS::S3::Bucket") | .PhysicalResourceId'
 ```
 
-STACK_NAME=sam-app-cicd
-BUCKET_NAME=$(aws cloudformation describe-stack-resources --stack-name $STACK_NAME | jq -r '.StackResources[] | select(.ResourceType=="AWS::S3::Bucket") | .PhysicalResourceId')
-aws s3 rb s3://$BUCKET_NAME/ --force
+Empty the bucket by going to the [S3 console](https://console.aws.amazon.com/s3/home). And then Delete it.
 
+![EmptyBucket](/images/cleanup/empty-bucket.png)
+
+### Second Bucket
+
+The second bucket was created by CDK to be used by CodePipeline. Let's find the bucket name with the following command:
+
+```bash
+aws cloudformation describe-stack-resources \
+--stack-name sam-app-cicd \
+| jq -r '.StackResources[] | select(.ResourceType=="AWS::S3::Bucket") | .PhysicalResourceId'
 ```
+
+Then empty the bucket as well:
+
+![EmptyBucket](/images/cleanup/empty-bucket-2.png)
