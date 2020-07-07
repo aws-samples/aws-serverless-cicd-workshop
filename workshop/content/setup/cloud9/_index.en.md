@@ -19,10 +19,12 @@ Navigate to the Cloud9 console: [https://console.aws.amazon.com/cloud9](https://
 Once you navigate to the Cloud9 console, click on the create environment button:
 ![CreateCloud9](/images/screenshot-cloud9-1.png)
 
-Chose a name for your environment.
+Chose a name for your environment. For Example - **MyCloud9Workspace**
 ![ChoseNameCloud9](/images/screenshot-cloud9-2.png)
 
-Leave the default configuration, we don't need a heavy server for this workshop.
+Leave the default configuration, we don't need a heavy server for this workshop.                                
+(If you are running in your personal account and has other projects with Cloud9, feel free to use a larger instance type.)
+
 ![SpecsCloud9](/images/screenshot-cloud9-3.png)
 
 Once you confirm creation, after a couple of minutes, your environment should look like the following image:
