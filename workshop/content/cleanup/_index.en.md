@@ -6,7 +6,8 @@ chapter = true
 pre = "<b>6. </b>"
 +++
 
+# Cleanup
 
+In this chapter you will learn how to cleanup the resources created in this workshop to avoid any undesired charges in your AWS bill. 
 
-# CLEANUP
 ![Cleaned Environment](/images/cleanup.svg)

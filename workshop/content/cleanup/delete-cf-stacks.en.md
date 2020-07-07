@@ -4,7 +4,7 @@ date =  2020-07-06T18:10:22-04:00
 weight = 6
 +++
 
-In order to delete the resources created we need to delete the Cloudformation stacks:
+Now that the buckets are empty, we can delete the Cloudformation stacks:
 
 Delete the CF stacks in following sequence
 
