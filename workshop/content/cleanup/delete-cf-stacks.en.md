@@ -9,9 +9,9 @@ In order to delete the resources created we need to delete the Cloudformation st
 Delete the CF stacks
 
 ```
-aws cloudformation delete-stack --stack-name aws-sam-cli-managed-default
 aws cloudformation delete-stack --stack-name sam-app
 aws cloudformation delete-stack --stack-name sam-app-cicd
+aws cloudformation delete-stack --stack-name aws-sam-cli-managed-default
 
 ```
 
