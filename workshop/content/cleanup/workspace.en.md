@@ -9,3 +9,5 @@ to our account, we can delete the workspace we created:
 
 - Go to your [Cloud9 Environment](https://console.aws.amazon.com/cloud9/home)
 - Select the environment named **MyCloud9Workspace** and pick **delete**
+
+![Delete Cloud9 Workspace](/images/Delete-Cloud9workspace.png)
