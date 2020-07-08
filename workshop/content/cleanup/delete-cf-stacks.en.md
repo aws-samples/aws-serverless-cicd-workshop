@@ -6,7 +6,7 @@ weight = 6
 
 In order to delete the resources created we need to delete the Cloudformation stacks:
 
-Delete the CF stacks in following sequence
+Delete the CF stacks in following sequence and please wait for each to complete before going to next one. 
 
 Delete **sam-app**
 ```
