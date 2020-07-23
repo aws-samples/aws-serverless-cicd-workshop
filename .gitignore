@@ -1,2 +1,4 @@
 .DS_Store
 workshop/themes/*
+/.idea/
+/aws-serverless-cicd-workshop.iml
