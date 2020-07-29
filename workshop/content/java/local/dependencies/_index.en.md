@@ -17,6 +17,8 @@ sudo update-alternatives --config java
 sudo update-alternatives --config javac
 ```
 
+![NpmInstall](/images/java/chapter2/dependencies/java-alternatives.png)
+
 Install Maven by using the terminal to run the following commands.
 ```
 sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo

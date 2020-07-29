@@ -46,4 +46,4 @@ In Cloud9, go to the top menu and chose **Tools > Preview > Preview Running Appl
 
 ![PreviewSamLocal](/images/java/chapter2/run/preview.png)
 
-Note how SAM is pulling the Docker container image _lambci/lambda:java11_ automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function within it. The first invocation might take a few seconds due to the docker pull command, but subsequent invocations should be much faster.
+Note how SAM is pulling the Docker container image _lambci/lambda:java8_ automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function within it. The first invocation might take a few seconds due to the docker pull command, but subsequent invocations should be much faster.
