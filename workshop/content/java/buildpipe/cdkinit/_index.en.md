@@ -64,7 +64,7 @@ sam-app                                         # SAM application root
 └── template.yaml                               # SAM template
 ```
 
-Now install the CDK modules that we will be using to build a pipeline. Add the following maven dependencies:
+Now add the CDK dependencies that we will be using to build a pipeline. Add the following maven dependencies to you pom.xml:
 
 ```$xml
         <dependency>

@@ -25,9 +25,6 @@ It will prompt for project configuration parameters:
 #### Press enter to accept the default `sam-app` for project name
 ![samInit](/images/java/chapter1/init/default-project-name.png)
 
-#### Type `Y` to accept download from GitHub
-![samInit](/images/java/chapter1/init/accept-github.png)
-
 #### Type `1` to select the Hello World Example
 ![samInit](/images/java/chapter1/init/hello-world-example.png)
 

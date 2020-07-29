@@ -14,7 +14,6 @@ The first artifact that gets generated in a Serverless project is your codebase,
 
 The second artifact that SAM CLI generates during the _package_ phase is the packaged template. Which is basically a copy of your project's `template.yaml`, except that it references the location of the zip file (first artifact) in the S3 bucket. The following image shows an example of a packaged template.
 
-MS TODO 
 ![SamPackagedTemplate](/images/screenshot-sam-packaged-template.png)
 
 Notice how the `CodeUri` references the zip file on an S3 bucket, rather than on a local directory. This is how AWS Lambda is able to pull your code at deployment time.

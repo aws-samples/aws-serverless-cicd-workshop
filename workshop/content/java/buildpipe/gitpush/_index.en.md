@@ -25,6 +25,8 @@ Open the `.gitignore` file and paste the two lines below.
 packaged.yaml
 ```
 
+Remember to save the file (File> Save or CMD +S etc)
+
 ![GitIgnore](/images/java/chapter4/gitpush/git-ignore.png)
 
 From the root directory of your _sam-app_ project, run the following commands:
