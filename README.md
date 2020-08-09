@@ -6,9 +6,16 @@ In this workshop, you will learn how to start a new Serverless application from 
 
 ## Getting Started
 
-Workshop URL: [https://cicd.serverlessworkshops.io](https://cicd.serverlessworkshops.io)
+Visit the workshop on this URL: [https://cicd.serverlessworkshops.io](https://cicd.serverlessworkshops.io)
 
-Looking for the old version of the workshop that **doesn't** use the AWS CDK? [https://v1.cicd.serverlessworkshops.io](https://cicd.serverlessworkshops.io). 
+## Older workshop versions
+
+This workshop has been evolving thanks to community contributions, but we are keeping older versions in case you prefer them. Every major update, we create a branch with the old version and we make it available in the following URLs, so feel free to use them: 
+
+| Version  | Description | URL |
+| ------------- | ------------- | ------------- |
+| v1  | Raw cloudformation, no CDK  | [https://v1.cicd.serverlessworkshops.io](https://v1.cicd.serverlessworkshops.io) |
+| v2  | No multi-language, javascript only | [https://v2.cicd.serverlessworkshops.io](https://v2.cicd.serverlessworkshops.io) |
 
 ## Want to contribute?
 
