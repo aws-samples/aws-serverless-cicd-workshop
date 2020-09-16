@@ -61,7 +61,7 @@ function install_linuxbrew() {
     _logger "[+] Creating touch symlink"
     sudo ln -sf /bin/touch /usr/bin/touch
     _logger "[+] Installing homebrew..."
-    echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     _logger "[+] Adding homebrew in PATH"
     test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
     test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
