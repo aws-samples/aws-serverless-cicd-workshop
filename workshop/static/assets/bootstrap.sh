@@ -40,7 +40,11 @@ function upgrade_sam_cli() {
 
 function upgrade_existing_packages() {
     _logger "[+] Upgrading system packages"
-    sudo yum update -y
+    if [[ $(command -v apt-get) ]]; then
+        sudo apt-get upgrade -y
+    elif [[ $(command -v yum) ]]; then
+        sudo yum update -y
+    fi
 
     _logger "[+] Upgrading Python pip and setuptools"
     python3 -m pip install --upgrade pip setuptools --user
@@ -60,13 +64,18 @@ function install_utility_tools() {
 function install_linuxbrew() {
     _logger "[+] Creating touch symlink"
     sudo ln -sf /bin/touch /usr/bin/touch
-    _logger "[+] Installing homebrew..."
-    echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    _logger "[+] Adding homebrew in PATH"
-    test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+    if [[ $(command -v brew) == "" ]]; then
+        _logger "[+] Installing homebrew..."
+        echo | sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        _logger "[+] Adding homebrew in PATH"
+        test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+        test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+        echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+    else
+        _logger "[+] Homebrew already installed..."
+    fi
 }
 
 function main() {
