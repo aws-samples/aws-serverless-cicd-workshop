@@ -44,6 +44,14 @@ After a few seconds, our new CDK project should look like this:
 
 ![CdkInit](/images/chapter4/screenshot-cdk-init.png)
 
+{{% notice info %}}
+If you are using Cloud9 and get an insufficent space or `ENOSPC: no space left on device` error, you may resize your volume by using the following commands from your Cloud9 terminal.
+{{% /notice %}}
+```bash
+wget https://cicd.serverlessworkshops.io/assets/resize.sh
+chmod +x resize.sh
+./resize.sh 20
+```
 
 ### Project structure
 
