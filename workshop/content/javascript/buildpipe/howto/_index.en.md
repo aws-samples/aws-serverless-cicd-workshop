@@ -19,6 +19,6 @@ In this workshop, we are going to use the AWS Cloud Development Kit (also known 
 
 That's right! You can describe your infrastructure by writing code in TypeScript, C#, Python or Java. Your code is then synthesized into CloudFormation and using the CDK CLI you can deploy it to an AWS account. 
 
-### How does SAM and CDK play together?
+### How do SAM and CDK play together?
 
 Serverless developers use the SAM framework to define their applications, SAM CLI to build them and deploy them and AWS CDK to provision any infrastructure related resources, like their CI/CD Pipeline. The nice thing about these tools is that they all share a common ground: CloudFormation. 
