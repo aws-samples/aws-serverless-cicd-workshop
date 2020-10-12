@@ -127,6 +127,7 @@ public class PipelineStack extends Stack {
                 .stageName("Dev")
                 .actions(Arrays.asList(createChangeSet, executeChangeSet))
                 .build());
+  }
 }
 {{< / highlight >}}
 {{% /expand%}}
