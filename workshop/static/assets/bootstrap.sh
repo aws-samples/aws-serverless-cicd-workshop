@@ -80,9 +80,10 @@ function install_linuxbrew() {
 
 function main() {
     upgrade_existing_packages
-    install_linuxbrew
+# current Cloud9 AMIs contain a recent SAM version, no install/ upgrade required
+#    install_linuxbrew
     install_utility_tools
-    upgrade_sam_cli
+#    upgrade_sam_cli
 
     echo -e "${RED} [!!!!!!!!!] Open up a new terminal to reflect changes ${NC}"
     _logger "[+] Restarting Shell to reflect changes"
