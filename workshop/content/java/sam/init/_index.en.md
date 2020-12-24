@@ -16,6 +16,9 @@ It will prompt for project configuration parameters:
 #### Type `1` to select AWS Quick Start Templates
 ![samInit](/images/java/chapter1/init/quick-start-template.png)
 
+#### Type `1` to select Zip as the package type
+![samInit](/images/java/chapter1/init/package-type.png)
+
 #### Type `12` to select the Java 8 runtime
 ![samInit](/images/java/chapter1/init/runtime.png)
 
