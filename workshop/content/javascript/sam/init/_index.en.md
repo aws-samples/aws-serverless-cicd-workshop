@@ -16,6 +16,9 @@ It will prompt for project configuration parameters:
 #### Type `1` to select AWS Quick Start Templates
 ![samInit](/images/screenshot-sam-init-1.png)
 
+#### Type `1` to select Zip as the package type
+![samInit](/images/screenshot-sam-init-1.0.png)
+
 #### Choose `nodejs12.x` for runtime
 ![samInit](/images/screenshot-sam-init-1.1.png)
 
