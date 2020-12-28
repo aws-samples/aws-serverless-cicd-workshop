@@ -1,0 +1,14 @@
+
+name: Add Preview URL
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: atlassian/gajira-comment@v2.0.2
+        with:
+          issue: ${{github.event.number}}
+          comment: ${{github.base_ref}}
