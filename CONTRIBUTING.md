@@ -26,13 +26,11 @@ Contributions via pull requests are much appreciated. Before sending us a pull r
 The static website is built using Hugo and to run it locally you need to install the [Hugo CLI](https://gohugo.io/getting-started/installing/). 
 
 1. Clone this repository. 
-2. Switch to the _dev_ branch. (`git checkout dev`).
-3. Download the Learn theme by running `git clone https://github.com/matcornic/hugo-theme-learn.git workshop/themes/learn` from within the root of the project.
-4. Run `hugo serve` from within the _workshop_ folder. 
+2. Download the Learn theme by running `git clone https://github.com/matcornic/hugo-theme-learn.git workshop/themes/learn` from within the root of the project.
+3. Run `hugo serve` from within the _workshop_ folder. 
 
 Please keep in mind the following before sending a pull request.
 
-- You are working against the latest source on the `dev` branch.
 - You check existing open, and recently merged, pull requests to make sure someone else hasn't addressed the problem already.
 - You open an issue to discuss any significant work - we would hate for your time to be wasted.
 
