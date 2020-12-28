@@ -2,7 +2,7 @@
 
 In this workshop, you will learn how to start a new Serverless application from scratch using the AWS Serverless Application Model (AWS SAM) and how to fully automate builds and deployments by building a continous delivery pipeline using the AWS CDK. You will also learn how to run a Serverless application locally using the SAM CLI.
 
-![Image](workshop/static/images/github-home.png)
+![Image](workshop/static/images/github-home.svg)
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ This workshop has been evolving thanks to community contributions, but we are ke
 
 ## Want to contribute?
 
-Check our [contribution guidelines](CONTRIBUTING.md) before submitting a pull request. Please submit your contributions to the `dev` branch.
+Check our [contribution guidelines](CONTRIBUTING.md) before submitting a pull request.
 
 ## License
 
