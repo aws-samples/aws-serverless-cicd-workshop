@@ -11,4 +11,5 @@ jobs:
       - uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{github.event.number}}
-          body: Preview your changes here: [https://${{github.head_ref}}.d13cl562h1p8qu.amplifyapp.com](https://${{github.head_ref}}.d13cl562h1p8qu.amplifyapp.com)
+          body: |
+            Preview your changes here: [https://${{github.head_ref}}.d13cl562h1p8qu.amplifyapp.com](https://${{github.head_ref}}.d13cl562h1p8qu.amplifyapp.com)
