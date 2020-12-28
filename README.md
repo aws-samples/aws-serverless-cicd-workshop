@@ -21,7 +21,7 @@ This workshop has been evolving thanks to community contributions, but we are ke
 
 Check our [contribution guidelines](CONTRIBUTING.md) before submitting a pull request.
 
-## License
+## Licenses
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
 
