@@ -32,4 +32,4 @@ If you prefer to run the workshop from your local computer without using Cloud9,
 * [Git Client](https://git-scm.com/downloads) - To interact with the CodeCommit repository by pushing code changes.
 * [NodeJS and npm](https://www.npmjs.com/get-npm) - The sample app you will create is NodeJs-based.
 
-Once you have installed all requirements, you can start the workshop here: [Start workshop](/sam.html).
+Once you have installed all requirements, you can start the workshop here: [Start workshop](/javascript/sam.html).
