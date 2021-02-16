@@ -31,7 +31,12 @@ then
   sudo growpart /dev/xvda 1
  
   # Expand the size of the file system.
-  sudo resize2fs /dev/xvda1
+  if [ $(mount |grep xvda1 | cut -d " " -f 5) = "xfs" ]
+  then
+    sudo xfs_growfs /dev/xvda1
+  else
+    sudo resize2fs /dev/xvda1
+  fi
 
 else
   # Rewrite the partition table so that the partition takes up all the space that it can.
