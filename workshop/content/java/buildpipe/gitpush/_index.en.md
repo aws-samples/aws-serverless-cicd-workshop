@@ -42,14 +42,10 @@ Example:
 ![GitCommit](/images/java/chapter4/gitpush/initial-commit.png)
 
 ### Push the code
-Add your CodeCommit repository URL as a _remote_ on your local git project. This is the `cloneUrlHttp` value that you got back after creating the repository in Step 1 of this chapter.
-
-{{% notice tip %}}
-If you can't find the CodeCommit repository URL, you can find it by running this command: `aws codecommit get-repository --repository-name sam-app`.
-{{% /notice %}}
+Add your CodeCommit repository URL as a _remote_ on your local git project.
 
 ```
-git remote add origin REPLACE_WITH_HTTP_CLONE_URL
+git remote add origin codecommit://sam-app
 ```
 
 {{% notice tip %}}
