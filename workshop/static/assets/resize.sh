@@ -43,5 +43,10 @@ else
   sudo growpart /dev/nvme0n1 1
 
   # Expand the size of the file system.
-  sudo resize2fs /dev/nvme0n1p1
+  if [ $(mount |grep nvme0n1 | cut -d " " -f 5) = "xfs" ]
+  then
+    sudo xfs_growfs /dev/nvme0n1p1
+  else
+    sudo resize2fs /dev/nvme0n1p1
+  fi
 fi

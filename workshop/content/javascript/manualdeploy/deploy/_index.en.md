@@ -34,7 +34,7 @@ The guided deployment does few things for you. Let's take a quick look at what h
 **1)** Your codebase gets packaged in a zip file.  
 **2)** SAM creates an S3 bucket in your account, if it doesn't already exist.  
 **3)** Zip file is uploaded to the S3 bucket.  
-**4)** SAM creates the [packaged template](/manualdeploy/bucket.html) that references the location of the zip file on S3.  
+**4)** SAM creates the [packaged template](/javascript/manualdeploy/bucket.html#the-packaged-template) that references the location of the zip file on S3.
 **5)** This template is also uploaded to the S3 bucket.  
 **6)** SAM starts the deployment via CloudFormation ChangeSets.  
 
