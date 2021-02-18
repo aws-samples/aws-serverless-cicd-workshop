@@ -25,9 +25,6 @@ It will prompt for project configuration parameters:
 #### Leave default `sam-app` for project name
 ![samInit](/images/screenshot-sam-init-2.png)
 
-#### Type `Y` to accept download from GitHub
-![samInit](/images/screenshot-sam-init-3.png)
-
 #### Type `1` to select the `Hello World Example`
 ![samInit](/images/screenshot-sam-init-5.png) 
 
