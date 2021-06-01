@@ -46,7 +46,7 @@ If you typed the origin url incorrectly, you can remove it by running: `git remo
 Now, push the code:
 
 ```
-git push -u origin master
+git push -u origin main
 ```
 
 Example:
