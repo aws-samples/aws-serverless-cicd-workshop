@@ -4,7 +4,7 @@ date = 2019-10-04T12:54:48-07:00
 weight = 40
 +++
 
-The **Deploy Stage** is where your SAM application and all its resources are created an in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
+The **Deploy Stage** is where your SAM application and all its resources are created in an AWS account. The most common way to do this is by using CloudFormation ChangeSets to deploy. This means that this stage will have 2 actions: the _CreateChangeSet_ and the _ExecuteChangeSet_.
 
 Add the Deploy stage to your PipelineStack.java: 
 
