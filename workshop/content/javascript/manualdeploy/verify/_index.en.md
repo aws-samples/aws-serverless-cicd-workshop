@@ -12,7 +12,7 @@ Navigate to the [AWS CloudFormation console](https://console.aws.amazon.com/clou
 ![CloudFormationHome](/images/screenshot-cfn-1.png)
 
 ### Test the app
-Click on the **sam-app** stack and then go to the **Outputs** tab. In this tab, you will see the API Gateway URL, the Lambda function ARN and the IAM Role ARN for the function. To test our application, **copy the API Gateway endpoint URL and pase it in a new browser window**. 
+Click on the **sam-app** stack and then go to the **Outputs** tab. In this tab, you will see the API Gateway URL, the Lambda function ARN and the IAM Role ARN for the function. To test our application, **copy the API Gateway endpoint URL and pass it in a new browser window**. 
 
 ![CloudFormationSamAppDev](/images/screenshot-cfn-2.png)
 
