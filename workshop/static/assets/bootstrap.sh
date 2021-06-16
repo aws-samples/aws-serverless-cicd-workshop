@@ -31,7 +31,16 @@ function upgrade_sam_cli() {
     # cfn-lint currently clashing with SAM CLI deps
     ## installing SAM CLI via brew instead
     brew tap aws/tap
-    brew upgrade aws-sam-cli
+
+    # upgrade if aws-sam-cli is installed, install if not
+    set +e
+    brew ls --versions aws-sam-cli
+    if [ $? -eq 0 ]; then
+        brew upgrade aws-sam-cli
+    else
+        brew install aws-sam-cli
+    fi
+    set -e
 
     _logger "[+] Updating Cloud9 SAM binary"
     # Allows for local invoke within IDE (except debug run)
