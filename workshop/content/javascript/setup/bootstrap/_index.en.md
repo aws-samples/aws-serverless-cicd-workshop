@@ -8,35 +8,24 @@ One of the tools this workshop relies on, is the AWS SAM Command Line Interface.
 
 ### Bootstrap Script
 
-We have put together a bootstrap script that will make the upgrade easier for you. Download it by running the following command from your Cloud9 terminal. 
+We have put together a bootstrap script that will make the upgrade easier for you. Download and run
+it using the following command from your Cloud9 terminal.
 
 ```
-wget https://cicd.serverlessworkshops.io/assets/bootstrap.sh
-```
-
-Then give it permissions to execute: 
-
-```
-chmod +x bootstrap.sh
-```
-
-And run it: 
-
-```
-./bootstrap.sh
+curl -s https://cicd.serverlessworkshops.io/assets/bootstrap.sh | bash
 ```
 
 **THIS MAY TAKE A FEW MINUTES TO COMPLETE.**
 
-Example output: 
+Example output:
 ![BootstrapScreenshot](/images/screenshot-bootstrap.png)
 
 ### Verify the new version
 
-Run the following command: 
+Run the following command:
 
 ```
 sam --version
 ```
 
-You should see *SAM CLI, version 0.43.0* or greater.
+You should see _SAM CLI, version 0.43.0_ or greater.

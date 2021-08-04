@@ -18,11 +18,11 @@ The tests should fail. This is expected!
 ![FailedUnitTests](/images/screenshot-unit-tests-fail.png)
 
 ### Fix the unit test
-Makes sense right? We changed the response message to **hello my friend** and the unit test was expecting **hello world**. This is an easy fix, let's update the unit test. 
+Makes sense right? We changed the response message to **hello my friend** and the unit test was expecting **hello world**. This is an easy fix, let's update the unit test.
 
 Open the file `sam-app/hello-world/tests/unit/test-handler.js` and update the expected value for the response to match the new message. The unit test should look like this after the update:
 
-```
+```javascript
 'use strict';
 
 const app = require('../../app.js');
