@@ -17,7 +17,11 @@ curl -s https://cicd.serverlessworkshops.io/assets/bootstrap.sh | bash
 
 **THIS MAY TAKE A FEW MINUTES TO COMPLETE.**
 
+
 Example output:
+
+**TODO -- update this screenshot**
+
 ![BootstrapScreenshot](/images/screenshot-bootstrap.png)
 
 ### Verify the new version
@@ -28,4 +32,4 @@ Run the following command:
 sam --version
 ```
 
-You should see _SAM CLI, version 0.43.0_ or greater.
+You should see _SAM CLI, version 1.31.0_ or greater.

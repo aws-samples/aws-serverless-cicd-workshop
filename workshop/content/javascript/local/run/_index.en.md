@@ -30,6 +30,7 @@ learn why SAM does this.
 {{% /notice %}}
 
 
+
 #### Option A) Using CURL
 
 Without killing the running process, open a new terminal.

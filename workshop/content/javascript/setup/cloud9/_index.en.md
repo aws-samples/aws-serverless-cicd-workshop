@@ -22,8 +22,13 @@ Once you navigate to the Cloud9 console, click on the create environment button:
 Chose a name for your environment. For Example - **MyCloud9Workspace**
 ![ChoseNameCloud9](/images/screenshot-cloud9-2.png)
 
-Leave the default configuration, we don't need a heavy server for this workshop.                                
+Leave the default configuration, we don't need a heavy server for this workshop.
 (If you are running in your personal account and has other projects with Cloud9, feel free to use a larger instance type.)
+
+{{% notice info %}}
+**Make sure you select Amazon Linux 2.** Some of the scripts used in this workshop are designed
+to work with AL2 exlusively.
+{{% /notice %}}
 
 ![SpecsCloud9](/images/screenshot-cloud9-3.png)
 
