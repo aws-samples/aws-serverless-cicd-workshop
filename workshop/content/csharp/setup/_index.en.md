@@ -18,7 +18,7 @@ ___
 
 [AWS Cloud9](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) that lets you  write, run, and debug code from any machine with just a browser. We recommend using it to run this workshop because it already comes with the necessary set of tools pre-installed, but the workshop is not dependent on it, so you are free to run it from your local computer as well.
 
-If you want to use Cloud9, follow these instructions: [Create a Cloud9 Workspace](/javascript/setup/cloud9.html).
+If you want to use Cloud9, follow these instructions: [Create a Cloud9 Workspace](/csharp/setup/cloud9.html).
 
 ___
 
@@ -32,4 +32,4 @@ If you prefer to run the workshop from your local computer without using Cloud9,
 * [Git Client](https://git-scm.com/downloads) - To interact with the CodeCommit repository by pushing code changes.
 * [.NET Core](https://dotnet.microsoft.com/) - The sample app you will create is dotnet-based.
 
-Once you have installed all requirements, you can start the workshop here: [Start workshop](/javascript/sam.html).
+Once you have installed all requirements, you can start the workshop here: [Start workshop](/csharp/sam.html).
