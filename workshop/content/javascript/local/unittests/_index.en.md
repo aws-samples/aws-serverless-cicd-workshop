@@ -6,7 +6,7 @@ weight = 20
 
 As you typically would, with any software project, running the unit tests locally is no different for Serverless applications. Developers run them before pushing changes to a code repository. So, go ahead and run the unit tests for your project.
 
-In the terminal, run this command from the `sam-app/hello-world` folder to run the unit tests:
+foo the terminal, run this command from the `sam-app/hello-world` folder to run the unit tests:
 
 ```
 cd ~/environment/sam-app/hello-world
@@ -18,11 +18,11 @@ The tests should fail. This is expected!
 ![FailedUnitTests](/images/screenshot-unit-tests-fail.png)
 
 ### Fix the unit test
-Makes sense right? We changed the response message to **hello my friend** and the unit test was expecting **hello world**. This is an easy fix, let's update the unit test. 
+Makes sense right? We changed the response message to **hello my friend** and the unit test was expecting **hello world**. This is an easy fix, let's update the unit test.
 
 Open the file `sam-app/hello-world/tests/unit/test-handler.js` and update the expected value for the response to match the new message. The unit test should look like this after the update:
 
-```
+```javascript
 'use strict';
 
 const app = require('../../app.js');

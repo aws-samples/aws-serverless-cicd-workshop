@@ -4,7 +4,9 @@ date = 2019-10-03T16:26:02-07:00
 weight = 10
 +++
 
-One of the cool things about CodeCommit is the support for IAM authentication. And if you are running this workshop from a Cloud9 workspace, you can leverage the fact that your terminal is already pre-authenticated with valid AWS credentials.
+One of the cool things about CodeCommit is the support for IAM authentication. And if you are running
+this workshop from a Cloud9 workspace, you can leverage the fact that your terminal is already
+pre-authenticated with valid AWS credentials.
 
 Configure the git client with username and email, so your commits have an author defined.
 
