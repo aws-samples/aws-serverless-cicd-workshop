@@ -10,7 +10,7 @@ Append the following code snippet after your bucket definition in the **pipeline
 
 ```python
         # Import existing CodeCommit sam-app repository
-        code_repo = codecommit.Repository.from_repository_name(self, "AppRepository", "sam-app-python")
+        code_repo = codecommit.Repository.from_repository_name(self, "AppRepository", "sam-app")
         
         # Pipeline creation starts
         pipeline = codepipeline.Pipeline(self, "Pipeline",
@@ -58,7 +58,7 @@ class PipelineStack(cdk.Stack):
         artifacts_bucket = s3.Bucket(self, "ArtifactsBucket")
         
         # Import existing CodeCommit sam-app repository
-        code_repo = codecommit.Repository.from_repository_name(self, "AppRepository", "sam-app-python")
+        code_repo = codecommit.Repository.from_repository_name(self, "AppRepository", "sam-app")
         
         # Pipeline creation starts
         pipeline = codepipeline.Pipeline(self, "Pipeline",
