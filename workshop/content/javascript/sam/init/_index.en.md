@@ -29,7 +29,9 @@ It will prompt for project configuration parameters:
 ![samInit](/images/screenshot-sam-init-5.png)
 
 {{% notice tip %}}
-This command supports cookiecutter templates, so you could write your own custom scaffolding templates and specify them using the location flag, For example: sam init --location git+ssh://git@github.com/aws-samples/cookiecutter-aws-sam-python.git.
+This command supports cookiecutter templates, so you could write your own custom scaffolding
+templates and specify them using the location flag.
+For example: `sam init --location git+ssh://git@github.com/aws-samples/cookiecutter-aws-sam-python.git`
 {{% /notice%}}
 
 ## Project should now be initialized
@@ -37,4 +39,8 @@ This command supports cookiecutter templates, so you could write your own custom
 You should see a new folder `sam-app` created with a basic Hello World scaffolding.
 ![samInit](/images/screenshot-sam-init-7.png)
 
-If you are interested in learning more about initializing SAM projects, you can find the full reference for the `sam init` command in the [SAM CLI reference](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-init.html).
+{{% notice note %}}
+If you are interested in learning more about initializing SAM projects, you can find the full
+reference for the `sam init` command in the
+[SAM CLI reference](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-init.html).
+{{% /notice %}}

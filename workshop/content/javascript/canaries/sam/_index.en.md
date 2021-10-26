@@ -4,15 +4,21 @@ date = 2019-11-11T14:46:02-08:00
 weight = 15
 +++
 
-Open the SAM template (`sam-app/template.yaml`) in your project and add the following lines to the HelloWorldFunction properties section. 
+Open the SAM template (`sam-app/template.yaml`) in your project and add the `AutoPublishAlias` and
+`DeploymentPreference` blocks into the HelloWorldFunction properties section. The lines to add are
+highlighted in the code block below. The line numbers are approximate and may not line up exactly
+with your `template.yaml` file.
 
-```
+```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
+Runtime: nodejs14.x
 AutoPublishAlias: live
 DeploymentPreference:
-    Type: Canary10Percent5Minutes
+  Type: Canary10Percent5Minutes
+Architectures:
+  - x86_64
 ```
 
-It should look like this:  
+It should look like this:
 **PLEASE CHECK THE CORRECT INDENTATION, IT IS VERY IMPORTANT IN YAML FORMAT.**
 
 ![SamCanaryDeployment](/images/screenshot-canary-sam.png)
@@ -34,7 +40,8 @@ For this workshop, we are using the _Canary10Percent5Minutes_ strategy, which me
 The _Linear_ strategy means that traffic is shifted in equal increments with an equal number of time interval between each increment.
 
 ### Validate the SAM template
-Run the following command on your terminal: 
+
+Run the following command on your terminal:
 
 ```
 cd ~/environment/sam-app

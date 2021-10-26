@@ -19,6 +19,11 @@ credential.helper !aws codecommit credential-helper $@
 credential.usehttppath true
 ```
 
+If you are running this workshop outside Cloud9 or do **not** see the same credential configuation
+above, refer to the [CodeCommit
+Authentication](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control.html)
+documentation.
+
 Configure the git client with username and email, so your commits have an author defined.
 
 ```

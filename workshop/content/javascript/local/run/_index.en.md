@@ -11,7 +11,7 @@ will focus on number 2, but you can learn about invoking individual functions in
 
 In the terminal, run the following command from the root directory of the _sam-app_ folder:
 
-```
+```bash
 cd ~/environment/sam-app
 sam local start-api --port 8080
 ```
@@ -19,6 +19,16 @@ sam local start-api --port 8080
 {{% notice note %}}
 In a Cloud9 workspace, you must use port 8080, 8081 or 8082 to be able to open the URL in the local browser for preview.
 {{% /notice %}}
+
+{{% notice warning %}}
+If you are using Cloud9 and get an insufficent space or `ENOSPC: no space left on device` error, you may resize your volume by using the following commands from your Cloud9 terminal.
+{{% /notice %}}
+
+```bash
+wget https://cicd.serverlessworkshops.io/assets/resize.sh
+chmod +x resize.sh
+./resize.sh 20
+```
 
 ### Test your endpoint
 
@@ -28,8 +38,6 @@ Once your local server is running, we can send HTTP requests to test it. Chose o
 The first request will take several seconds as SAM downloads a Docker image. Continue reading to
 learn why SAM does this.
 {{% /notice %}}
-
-
 
 #### Option A) Using CURL
 
@@ -50,7 +58,7 @@ tab will open, append `/hello` to the end of the URL. This will invoke your Lamb
 
 ![PreviewSamLocal](/images/screenshot-samlocal-preview.png)
 
-Note how SAM is pulling the Docker container image `lambci/lambda:nodejs14.x` automatically. This is
-how SAM is able to simulate the Lambda runtime locally and run your function within it. The first
-invocation might take a few seconds due to the `docker pull` command, but subsequent invocations
-will be much faster.
+Note how SAM is pulling the Docker container image `public.ecr.aws/sam/emulation-nodejs14.x`
+automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function.
+The first invocation might take a few seconds due to the `docker pull` command, but subsequent
+invocations will be faster.

@@ -4,35 +4,36 @@ date = 2019-10-03T16:22:07-07:00
 weight = 15
 +++
 
-### Ignore the build artifacts
-Copy and paste the following lines at the end of the `sam-app/.gitgnore` file. There is no need to track the  .aws-sam directory or the packaged.yaml under version control as they are re-generated on every build. 
+### Inititialize Git repository
 
-```
-.aws-sam/
-packaged.yaml
-```
-
-In Cloud9, remember to enable hidden files: 
-
-![EnableHiddenFiles](/images/screenshot-hidden-files-cloud9.png)
-
-Open the `.gitignore` file and paste the two lines described above. 
-
-![GitIgnore](/images/screenshot-git-ignore.png)
-
-From the root directory of your _sam-app_ project, run the following commands:
+Now we need to initialize a Git repository locally, add the code and push to the CodeCommit repository.
 
 ```
 cd ~/environment/sam-app
-git init
+git init -b main
 git add .
 git commit -m "Initial commit"
 ```
 
-Example: 
-![GitCommit](/images/screenshot-git-commit.png)
+Example output:
+
+```text
+[main (root-commit) 7670f17] Initial commit
+ 10 files changed, 2487 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 events/event.json
+ create mode 100644 hello-world/.npmignore
+ create mode 100644 hello-world/app.js
+ create mode 100644 hello-world/package-lock.json
+ create mode 100644 hello-world/package.json
+ create mode 100644 hello-world/tests/unit/test-handler.js
+ create mode 100644 samconfig.toml
+ create mode 100644 template.yaml
+```
 
 ### Push the code
+
 Add your CodeCommit repository URL as a _remote_ on your local git project.
 
 ```
@@ -40,20 +41,31 @@ git remote add origin codecommit://sam-app
 ```
 
 {{% notice tip %}}
-If you typed the origin url incorrectly, you can remove it by running: `git remote rm origin`.
+If you mis-typed the origin url, you can remove it by running: `git remote rm origin`.
 {{% /notice %}}
 
 Now, push the code:
 
 ```
-git push -u origin master
+git push -u origin main
 ```
 
-Example:
+Example output:
 
-![GitPush](/images/screenshot-git-push.png)
+```text
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (16/16), 25.37 KiB | 4.23 MiB/s, done.
+Total 16 (delta 0), reused 0 (delta 0), pack-reused 0
+To codecommit://sam-app
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+```
 
 ### Verify in CodeCommit
+
 Navigate to the [AWS CodeCommit console](https://console.aws.amazon.com/codesuite/codecommit/home), find your _sam-app_ repository and click on it to view its contents. Make sure your code is there. You should see a screen like the following:
 
 ![VerifyCodeCommit](/images/screenshot-verify-codecommit.png)

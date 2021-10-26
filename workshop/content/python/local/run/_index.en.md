@@ -13,26 +13,19 @@ cd ~/environment/sam-app
 sam local start-api --port 8080
 ```
 
-<!--
-{{% notice warning %}}   
-Error: Template file not found at /home/ec2-user/environment/sam-app/hello-world/template.yml.  
-If you got this error is because you need to run the command from the same folder level where the SAM `template.yaml` is located. That is, the root directory of the sam-app folder.
-{{% /notice %}}
--->
-
 {{% notice note %}}
-In a Cloud9 workspace, you must use port 8080, 8081 or 8082 to be able to open the URL in the local browser for preview. 
+In a Cloud9 workspace, you must use port 8080, 8081 or 8082 to be able to open the URL in the local browser for preview.
 {{% /notice %}}
 
-{{% notice info %}}
+{{% notice warning %}}
 If you are using Cloud9 and get an insufficent space or `ENOSPC: no space left on device` error, you may resize your volume by using the following commands from your Cloud9 terminal.
 {{% /notice %}}
+
 ```bash
 wget https://cicd.serverlessworkshops.io/assets/resize.sh
 chmod +x resize.sh
 ./resize.sh 20
 ```
-
 
 ### Test your endpoint
 
@@ -56,4 +49,7 @@ In Cloud9, go to the top menu and chose **Tools > Preview > Preview Running Appl
 
 ![PreviewSamLocal](/images/python/local/cloud9_ide_browser.png)
 
-Note how SAM is pulling the Docker container image _lambci/lambda:python3.7_ automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function within it. The first invocation might take a few seconds due to the docker pull command, but subsequent invocations should be much faster.
+Note how SAM is pulling the Docker container image `public.ecr.aws/sam/emulation-python3.9`
+automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function.
+The first invocation might take a few seconds due to the docker pull command, but subsequent
+invocations will be faster.

@@ -1,21 +1,34 @@
 +++
-title = "Verify pipeline"
+title = "Inspect pipeline"
 date = 2019-11-05T14:20:52-08:00
 weight = 35
 +++
 
-Let your pipline run every stage. After it finishes it will look all green like the following screenshot:
+### Inspect the pipeline
 
-![VerifyPipelineRunning](/images/chapter4/screenshot-pipeline-verify-3.png)
+Once the `sam-app-pipeline` CloudFormation stack has completed, you will have a new CodePipeline Pipeline.
+Navigate to the [CodePipeline Console](https://console.aws.amazon.com/codesuite/codepipeline/pipelines).
+You should see a single Pipeline. If you've navigated here soon after deploying the pipeline
+CloudFormation stack, you will see your new Pipeline exeuting its first deployment.
 
-### Push the changes
+![Pipeline in-progress](/images/chapter4-pipelines/sam-app-pipeline-in-progress.png)
 
-In the terminal, run the following commands from the root directory of your `sam-app` project.
+Let your pipline run every stage. After it finishes all stages will be green.
 
-```
-git add .
-git commit -m "CI/CD Pipeline definition"
-git push
-```
+![Pipline stages in-progress](/images/chapter4-pipelines/sam-app-pipeline-2.png)
 
-#### Congratulations! You have created a CI/CD pipeline for a Serverless application!
+### Inspect the dev/prod stages
+
+Nagivate to the CloudFormation console. After your first Pipeline has finished you will notice two
+new stacks named `sam-app-dev` and `sam-app-prod`. These are the names you provided during the SAM
+Pipelines wizard in the previous step.
+
+CodeBuild created the `sam-app-dev` stack during the `DeployTest` Pipeline step. Similarly,
+CodeBuild created `sam-app-prod` during the `DeployProd` step.
+
+Look at the `Outputs` tab for each of these CloudFormation stacks to see the API endpoints. You can
+use `curl` or other methods to verify the functionality of your two new APIs.
+
+![API endpoints](/images/chapter4-pipelines/sam-app-dev-cfn-outputs.png)
+
+You may have noticed that unit tests are not being run in your pipeline. Let's fix that in the next section!

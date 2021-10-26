@@ -12,15 +12,11 @@
 
 set -euxo pipefail
 
-# ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
-# CURRENT_REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/\(.*\)[a-z]/\1/')
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
 SAM_INSTALL_DIR="sam-installation"
-
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info"
 
 function _logger() {
     echo -e "$(date) ${YELLOW}[*] $@ ${NC}"
