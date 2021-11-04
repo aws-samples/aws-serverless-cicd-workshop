@@ -45,7 +45,7 @@ pipeline.addStage(StageOptions.builder()
 
 The highlighted code is the new addition: 
 
-{{< highlight js "hl_lines=45-65" >}}
+```java {hl_lines=["45-65"]}
 // PipelineStack.java
 package com.myorg;
 
@@ -113,7 +113,7 @@ public class PipelineStack extends Stack {
                 .build());
     }
 }
-{{< / highlight >}}
+```
 {{% /expand%}}
 
 ### Deploy the pipeline
