@@ -17,8 +17,6 @@ find three sections that are commented out. Uncomment these three blocks of yaml
 like the following. The line numbers shown are approximate and may not be the same as your
 `codepipeline.yaml` file.
 
-The first section defines a new `Stage` in the CodePipeline.
-
 ```yaml {linenos=true,linenostart=213}
 # Uncomment and modify the following step for running the unit-tests
 - Name: UnitTest
@@ -35,7 +33,7 @@ The first section defines a new `Stage` in the CodePipeline.
         - Name: SourceCodeAsZip
 ```
 
-This line adds another IAM permission one of our IAM Policies.
+Another section
 
 ```yaml {linenos=true,linenostart=468}
 Resource:
@@ -43,7 +41,7 @@ Resource:
   - !GetAtt CodeBuildProjectUnitTest.Arn
 ```
 
-The last block creates a new AWS CodeBuild Project, to run the unit tests.
+Another section
 
 ```yaml {linenos=true,linenostart=578}
 # Uncomment and modify the following step for running the unit-tests

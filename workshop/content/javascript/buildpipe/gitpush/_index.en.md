@@ -11,6 +11,7 @@ Now we need to initialize a Git repository locally, add the code and push to the
 ```
 cd ~/environment/sam-app
 git init -b main
+echo -e "\n\n.aws-sam" >> .gitignore
 git add .
 git commit -m "Initial commit"
 ```

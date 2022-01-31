@@ -24,7 +24,7 @@ function _logger() {
 
 function update_system() {
     _logger "[+] Updating system packages"
-    sudo yum update -y
+    sudo yum update -y --skip-broken
 }
 
 function update_python_packages() {
