@@ -65,7 +65,9 @@ CodeBuildProjectUnitTest:
 ### Edit buildspec_unit_test.yml
 
 Open the `pipeline/buildspec_unit_test.yml` file in your editor. Replace the contents with the
-following:
+contents appropriate for your chose runtime:
+
+#### Javascript
 
 ```yaml
 version: 0.2
@@ -75,11 +77,25 @@ phases:
       nodejs: latest
   build:
     commands:
-      # trigger the unit tests here
       - echo 'Running unit tests'
       - cd hello-world
       - npm install
       - npm run test
+```
+
+#### Python
+
+```yaml
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: latest
+  build:
+    commands:
+      - echo 'Running unit tests'
+      - pip3 install pytest pytest-mock
+      - python3 -m pytest tests/unit
 ```
 
 ### Commit and push changes
