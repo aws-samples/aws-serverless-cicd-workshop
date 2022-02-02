@@ -1,7 +1,7 @@
 +++
 title = "Monitor canary health"
 date = 2019-11-11T16:24:12-08:00
-weight = 23
+weight = 25
 +++
 
 Canary deployments are considerably more successful if the code is being monitored during the
@@ -34,17 +34,27 @@ CanaryErrorsAlarm:
         Value: !GetAtt HelloWorldFunction.Version.Version
 ```
 
-And then add the following lines to the `DeploymentPreference` section of the `HelloWorldFunction`
-definition.
+Change the `DeploymentPreference` section of the `HelloWorldFunction`
+definition. You will configure the `dev` stage to use the `AllAtOnce` deployment strategy and `prod` to
+use the canary method. This will make your deployments for `dev` faster and show you how to configure your SAM
+template using CloudFormation Conditions.
 
 ```yaml
-Alarms:
-  - !Ref CanaryErrorsAlarm
+DeploymentPreference:
+  Type: !If [IsProduction, "Canary10Percent5Minutes", "AllAtOnce"]
+  Alarms: !If [IsProduction, [!Ref CanaryErrorsAlarm], []]
+```
+
+You will also need to add the `IsProduction` Condition statement after the `Globals` section.
+
+```yaml
+Conditions:
+  IsProduction: !Equals [!Ref "AWS::StackName", "sam-app-prod"]
 ```
 
 Your `template.yaml` should look like this:
 
-```yaml {linenos=true,hl_lines=["22-23","31-48"]}
+```yaml {linenos=true,hl_lines=["12-13","23-25","33-50"]}
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
@@ -56,6 +66,9 @@ Globals:
   Function:
     Timeout: 3
 
+Conditions:
+  IsProduction: !Equals [!Ref "AWS::StackName", "sam-app-prod"]
+
 Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
@@ -65,9 +78,8 @@ Resources:
       Runtime: nodejs14.x
       AutoPublishAlias: live
       DeploymentPreference:
-        Type: Canary10Percent5Minutes
-        Alarms:
-          - !Ref CanaryErrorsAlarm
+        Type: !If [IsProduction, "Canary10Percent5Minutes", "AllAtOnce"]
+        Alarms: !If [IsProduction, [!Ref CanaryErrorsAlarm], []]
       Events:
         HelloWorld:
           Type: Api
@@ -118,14 +130,6 @@ cd ~/environment/sam-app
 sam validate
 ```
 
-If the template is correct, you will see `template.yaml is a valid SAM Template`. If you see an error, then you likely have an indentation issue on the YAML file. Double check and make sure it matches the screenshot shown above.
-
-### Push the changes
-
-In the terminal, run the following commands from the root directory of your `sam-app` project.
-
-```
-git add .
-git commit -m "Added CloudWatch alarm to monitor the canary"
-git push
-```
+If the template is correct, you will see `template.yaml is a valid SAM Template`. If you see an
+error, then you likely have an indentation issue on the YAML file. Double check and make sure it
+matches the screenshot shown above.

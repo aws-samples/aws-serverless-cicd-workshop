@@ -13,16 +13,13 @@ cd ~/environment/sam-app
 sam build
 ```
 
-<!--
-{{% notice warning %}}
-Error: Template file not found at */template.yaml.  
-If you got this error is because you need to run SAM commands at the same level where the _template.yaml_ file is located.
-{{% /notice%}}
--->
-
 ### Build completed
-When the build finishes successfully, you should see a new directory created in the root of the project named `.aws-sam`. It is a hidden folder, so if you want to see it in the IDE, **make sure you enable _Show Hidden Files_ in Cloud9** to see it. 
+
+When the build finishes successfully, you should see a new directory created in the root of the
+project named `.aws-sam`. It is a hidden folder, so if you want to see it in the IDE, **make sure
+you enable _Show Hidden Files_ in Cloud9** to see it.
 ![SamBuild](/images/python/manualdeploy/cloud9_ide_sam_build.png)
 
 ### Explore the build folder
-Take a moment to explore the contents of the `.aws-sam/build` folder. 
+
+Take a moment to explore the contents of the `.aws-sam/build` folder.

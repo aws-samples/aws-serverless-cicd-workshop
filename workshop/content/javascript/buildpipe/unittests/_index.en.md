@@ -65,9 +65,10 @@ CodeBuildProjectUnitTest:
 ### Edit buildspec_unit_test.yml
 
 Open the `pipeline/buildspec_unit_test.yml` file in your editor. Replace the contents with the
-contents appropriate for your chose runtime:
+contents appropriate for your chosen runtime:
 
-#### Javascript
+{{< tabs >}}
+{{% tab name="Node" %}}
 
 ```yaml
 version: 0.2
@@ -83,7 +84,9 @@ phases:
       - npm run test
 ```
 
-#### Python
+{{% /tab %}}
+
+{{% tab name="python" %}}
 
 ```yaml
 version: 0.2
@@ -97,6 +100,9 @@ phases:
       - pip3 install pytest pytest-mock
       - python3 -m pytest tests/unit
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Commit and push changes
 

@@ -4,7 +4,7 @@ date = 2021-08-30T08:30:00-06:00
 weight = 30
 +++
 
-Monitoring the health of your canary allows CodeDeploy to make a decision to whether a rollback is needed or not. If any of the CloudWatch Alarms specified gets to ALARM status, CodeDeploy rollsback the deployment automatically. 
+Monitoring the health of your canary allows CodeDeploy to make a decision to whether a rollback is needed or not. If any of the CloudWatch Alarms specified gets to ALARM status, CodeDeploy rollsback the deployment automatically.
 
 ### Introduce an error on purpose
 
@@ -28,7 +28,6 @@ def lambda_handler(event, context):
 ```
 
 Note: This error condition is not covered by the unit tests, so the build will not fail.
-
 
 ### Push the changes
 

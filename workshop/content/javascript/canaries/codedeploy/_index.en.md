@@ -1,7 +1,7 @@
 +++
 title = "Verify in CodeDeploy"
 date = 2019-11-11T16:01:01-08:00
-weight = 25
+weight = 20
 +++
 
 Wait for your pipeline to get to the deployment stage (ExecuteChangeSet) and when you see it _In Progress_. Navigate to the CodeDeploy console to watch the deployment progress.
@@ -19,4 +19,3 @@ The deployment status shows that 10% of the traffic has been shifted to the new 
 Shortly after the 5 minutes, the remaining traffic should be shifted to the new version:
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-2.png)
-

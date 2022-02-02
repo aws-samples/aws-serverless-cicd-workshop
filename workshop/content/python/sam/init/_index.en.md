@@ -23,7 +23,11 @@ Type `1` to select **AWS Quick Start Templates** then type `1` to select **Zip**
 
 ![samInit](/images/python/sam/cloud9_ide_sam_init.png)
 
-Choose `python3.9` for runtime
+Choose `python3.7` for runtime
+{{% notice tip %}}
+We're using this older version of Python since this is the version installed on Cloud9. It's
+possible to use Docker containers to build with SAM using the `--use-container` option.
+{{% /notice%}}
 ![samInitPython](/images/python/sam/cloud9_ide_sam_init_python.png)
 
 Leave default **sam-app** for project name and type `1` to select the **Hello World Example**
