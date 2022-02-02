@@ -48,8 +48,3 @@ curl http://localhost:8080/hello
 In Cloud9, go to the top menu and chose **Tools > Preview > Preview Running Application**. A browser tab will open, append `/hello` to the end of the URL. This will invoke your Lambda function locally.
 
 ![PreviewSamLocal](/images/python/local/cloud9_ide_browser.png)
-
-Note how SAM is pulling the Docker container image `public.ecr.aws/sam/emulation-python3.9`
-automatically. This is how SAM is able to simulate the Lambda runtime locally and run your function.
-The first invocation might take a few seconds due to the docker pull command, but subsequent
-invocations will be faster.
