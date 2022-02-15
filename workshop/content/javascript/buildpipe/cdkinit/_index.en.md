@@ -4,17 +4,12 @@ date = 2019-11-01T15:26:09-07:00
 weight = 21
 +++
 
-## Install the latest CDK
+## Install the CDK V1
 
-If you are using Cloud9, the CDK is already pre-installed but it will likely be a few versions old. Run the following commands from the Cloud9 terminal to remove your current version and install the latest one:
+If you are using Cloud9, the CDK is already pre-installed but it will likely be a the CDK V2. Where this workshop was published for AWS CDK V1. Run the following commands from the Cloud9 terminal to remove your current version we will initialize the pipeline with V1 in a bit:
 ```
-npm uninstall -g aws-cdk
-npm install -g aws-cdk
+npm uninstall -g cdk
 ```
-
-{{% notice tip %}}
-If the Cloud9 terminal returns an error, use the `--force` flag: `npm install -g aws-cdk --force`
-{{% /notice %}}
 
 
 ### Initialize project
@@ -29,7 +24,16 @@ cd pipeline
 Initialize a new CDK project within the _pipeline_ folder by running the following command:
 
 ```
-cdk init --language typescript
+npx aws-cdk@1.x init app --language typescript
+```
+
+{{% notice tip %}}
+You will be prompted to install ```aws-cdk@1.x```, go ahead and accept with ```y```.
+{{% /notice %}}
+
+Now add an alias as ```cdk``` for AWS CDK V1:
+```
+alias cdk="npx aws-cdk@1.x"
 ```
 
 Now install the CDK modules that we will be using to build a pipeline: 
