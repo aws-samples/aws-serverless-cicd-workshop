@@ -4,15 +4,12 @@ date = 2021-08-30T08:30:00-06:00
 weight = 21
 +++
 
-## Install the latest CDK
+## Install the CDK V1
 
-If you are using Cloud9, the CDK is already pre-installed but it will likely be a few versions old. Likewise, the Node.js runtime is outdated.
+If you are using Cloud9, the CDK is already pre-installed but it will likely be a the CDK V2. Where this workshop was published for AWS CDK V1. Run the following commands from the Cloud9 terminal to remove your current version we will initialize the pipeline with V1 in a bit:
 
-Run the following commands from the Cloud9 terminal to update Node.js and and install the latest AWS CDK:
 ```bash
-nvm install lts/fermium
-nvm alias default lts/fermium
-npm install -g aws-cdk
+npm uninstall -g cdk
 ```
 
 ### Initialize project
@@ -27,7 +24,16 @@ cd pipeline
 Initialize a new CDK project within the _pipeline_ folder by running the following command:
 
 ```bash
-cdk init --language python
+npx aws-cdk@1.x init app --language python
+```
+
+{{% notice tip %}}
+You will be prompted to install ```aws-cdk@1.x```, go ahead and accept with ```y```.
+{{% /notice %}}
+
+Now add an alias as ```cdk``` for AWS CDK V1:
+```bash
+alias cdk="npx aws-cdk@1.x"
 ```
 
 Now install the CDK modules that we will be using to build a pipeline: 
