@@ -13,9 +13,16 @@ CloudFormation stack, you will see your new Pipeline exeuting its first deployme
 
 ![Pipeline in-progress](/images/chapter4-pipelines/sam-app-pipeline-in-progress.png)
 
-Let your pipline run every stage. After it finishes all stages will be green.
+Let your pipeline run every stage. After it finishes all stages will be green.
 
 ![Pipline stages in-progress](/images/chapter4-pipelines/sam-app-pipeline-2.png)
+
+{{% notice note %}}
+You may have noticed our `sam-app-dev` is deployed in a CodePipleine stage named `DeployTest`. The
+`DeployTest` name is hardcoded in the `codepipeline.yaml` file and does not relate in any way to our
+dev application that we named `sam-app-dev`. When you use this template outside this workshow you could
+rename `DeployTest` to anything appropriate.
+{{% /notice %}}
 
 ### Inspect the dev/prod stages
 
@@ -31,4 +38,4 @@ use `curl` or other methods to verify the functionality of your two new APIs.
 
 ![API endpoints](/images/chapter4-pipelines/sam-app-dev-cfn-outputs.png)
 
-You may have noticed that unit tests are not being run in your pipeline. Let's fix that in the next section!
+#### You may have noticed that unit tests are not being run in your pipeline. Let's fix that in the next section!

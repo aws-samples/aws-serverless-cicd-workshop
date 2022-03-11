@@ -4,40 +4,88 @@ date = 2019-10-03T09:05:09-07:00
 weight = 20
 +++
 
-As you typically would, with any software project, running the unit tests locally is no different
-for Serverless applications. Developers run them before pushing changes to a code repository. So, go
-ahead and run the unit tests for your project.
+Running the unit tests locally is no different for Serverless applications. Developers run them
+before pushing changes to a code repository. Let's look at how to run tests in our application.
 
 In your terminal, run these commands to execute the unit tests:
 
+{{< tabs >}}
+{{% tab name="Node" %}}
+
 ```bash
 cd ~/environment/sam-app/hello-world
+npm install
 npm run test
 ```
 
-The tests should fail. This is expected!
+{{% /tab %}}
+{{% tab name="python" %}}
+
+```bash
+cd ~/environment/sam-app
+pip3 install pytest pytest-mock
+python3 -m pytest tests/unit
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+Don't worry! The tests will fail which is expected.
+
+{{< tabs >}}
+{{% tab name="Node" %}}
+
+```text
+  1) Tests index
+       verifies successful response:
+
+      AssertionError: expected 'hello my friend' to equal 'hello world'
+      + expected - actual
+
+      -hello my friend
+      +hello world
+```
+
+{{% /tab %}}
+{{% tab name="python" %}}
+
+```text
+    def test_lambda_handler(apigw_event, mocker):
+
+        ret = app.lambda_handler(apigw_event, "")
+        data = json.loads(ret["body"])
+
+        assert ret["statusCode"] == 200
+        assert "message" in ret["body"]
+>       assert data["message"] == "hello world"
+E       AssertionError: assert 'hello my friend' == 'hello world'
+E         - hello world
+E         + hello my friend
+
+tests/unit/test_handler.py:72: AssertionError
+```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 {{% notice note %}}
-This project uses the [Chai Framework](https://www.chaijs.com) for running the unit tests, but you can chose any other framework. SAM doesn't enforce any particular one. You can continue to have the same unit testing workflow that you do in a non-serverless application.
+This project uses the [Chai Framework](https://www.chaijs.com) or [Pytest](https://pytest.org/) for
+running unit tests. You can use any framework of your choice. SAM does not enforce frameworks on you.
+You can use a unit testing workflow that works for you and that you may use in a non-serverless
+application.
 {{% /notice%}}
-
-![FailedUnitTests](/images/screenshot-unit-tests-fail.png)
 
 ### Fix the unit test
 
 Makes sense right? We changed the response message to `hello my friend` and the unit test was
 expecting `hello world`. This is an easy fix, let's update the unit test.
 
-Open the file `sam-app/hello-world/tests/unit/test-handler.js` and update the expected value for the response to match the new message. The unit test should look like this after the update:
+{{< tabs >}}
+{{% tab name="Node" %}}
 
-```javascript
-"use strict"
+`hello-world/tests/unit/test-handler.js`
 
-const app = require("../../app.js")
-const chai = require("chai")
-const expect = chai.expect
-var event, context
-
+```js {hl_lines=["12"]}
 describe("Tests index", function () {
   it("verifies successful response", async () => {
     const result = await app.lambdaHandler(event, context)
@@ -49,27 +97,54 @@ describe("Tests index", function () {
     let response = JSON.parse(result.body)
 
     expect(response).to.be.an("object")
-    expect(response.message).to.be.equal("hello my friend") // <- FIX
+    expect(response.message).to.be.equal("hello my friend")
   })
 })
 ```
 
+{{% /tab %}}
+{{% tab name="python" %}}
+
+`tests/unit/test_handler.py`
+
+```python {hl_lines=["8"]}
+def test_lambda_handler(apigw_event, mocker):
+
+    ret = app.lambda_handler(apigw_event, "")
+    data = json.loads(ret["body"])
+
+    assert ret["statusCode"] == 200
+    assert "message" in ret["body"]
+    assert data["message"] == "hello my friend"
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
 ### Run the tests again
 
-Run the same command again.
+{{< tabs >}}
+{{% tab name="Node" %}}
 
-```
+```text
 npm run test
-```
-
-Now the tests should pass:
-
-```bash
-> hello_world@1.0.0 test
-> mocha tests/unit/
 
   Tests index
-    ✓ verifies successful response
+    ✔ verifies successful response
+
 
   1 passing (6ms)
 ```
+
+{{% /tab %}}
+{{% tab name="python" %}}
+
+```text
+python3 -m pytest tests/unit
+
+tests/unit/test_handler.py .                                                                                                                        [100%]
+========= 1 passed in 0.02s ========
+```
+
+{{% /tab %}}
+{{% /tabs %}}

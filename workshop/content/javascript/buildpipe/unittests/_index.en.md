@@ -12,10 +12,10 @@ To enable unit tests in your pipeline there are three steps.
 
 ### Edit codepipeline.yaml
 
-Open up the `codepipeline.yaml` file in your editor. Search for the string `unit-test` and you will
-find three sections that are commented out. Uncomment these three blocks of yaml. They should look
-like the following. The line numbers shown are approximate and may not be the same as your
-`codepipeline.yaml` file.
+Open up the `codepipeline.yaml` file in your editor. Search for the string `unit-test` or
+`UnitTest`. You will find three sections that are commented out. Uncomment these three blocks of
+yaml. They should look like the following. **Note** that the line numbers below are approximate and
+may not be the same as your `codepipeline.yaml` file.
 
 The first section defines a new `Stage` in the CodePipeline.
 
@@ -37,10 +37,12 @@ The first section defines a new `Stage` in the CodePipeline.
 
 This line adds another IAM permission one of our IAM Policies.
 
-```yaml {linenos=true,linenostart=468}
+```yaml {linenos=true,linenostart=468,hl_lines=["2-3"]}
 Resource:
   # Uncomment the line below to enable the unit-tests
   - !GetAtt CodeBuildProjectUnitTest.Arn
+  - !If
+    - IsFeatureBranchPipeline
 ```
 
 The last block creates a new AWS CodeBuild Project, to run the unit tests.
@@ -122,3 +124,5 @@ in that CloudFormation template, will be applied automatically once you commit.
 ![SimplePipeline](/images/chapter4-pipelines/code-pipeline.gif)
 
 #### Congratulations! You have created a CI/CD pipeline for a Serverless application!
+
+#### Let's learn how to enable canary deployments and trigger rollbacks in the face of errors.

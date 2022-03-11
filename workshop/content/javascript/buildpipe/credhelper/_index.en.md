@@ -26,11 +26,7 @@ documentation.
 
 Configure the git client with username and email, so your commits have an author defined.
 
-```
+```text
 git config --global user.name "Replace with your name"
 git config --global user.email "replace_with_your_email@example.com"
 ```
-
-Example:
-
-![CredsHelper](/images/screenshot-creds-helper.png)

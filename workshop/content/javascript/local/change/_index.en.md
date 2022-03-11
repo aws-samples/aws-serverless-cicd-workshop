@@ -4,17 +4,62 @@ date = 2019-10-03T08:52:21-07:00
 weight = 15
 +++
 
-While the app is still running, open the file `sam-app/hello-world/app.js` and make a simple code change. For example, change the response message to return `hello my friend` instead of _hello world_. Your Lambda handler should look like this after the change:
+While the app is still running, open the application code and make a
+simple change. Change the response message to return `hello my friend` instead of
+`hello world`. Your Lambda handler should look like this after the change:
 
-![MakeCodeChange](/images/screenshot-make-code-change.png)
+{{< tabs >}}
+{{% tab name="Node" %}}
 
-{{% notice note %}}
-Make sure you save the file after changing it.
-{{% /notice %}}
+`~environment/sam-app/hello-world/app.js`
 
-You don't have to restart the `sam local` process, just refresh the browser tab or re-trigger the CURL command to see the changes reflected in your endpoint.
-![SamLocalCodeChange](/images/screenshot-sam-local-code-change.png)
+```js
+let response
 
-{{% notice tip %}}
-You only need to restart `sam local` if you change the `template.yaml`.
-{{% /notice%}}
+exports.lambdaHandler = async (event, context) => {
+  try {
+    response = {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: "hello my friend",
+      }),
+    }
+  } catch (err) {
+    console.log(err)
+    return err
+  }
+
+  return response
+}
+```
+
+{{% /tab %}}
+{{% tab name="python" %}}
+`~environment/sam-app/hello_world/app.py`
+
+```python
+import json
+
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "message": "hello my friend",
+        }),
+    }
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+You do **not** need to restart the `sam local` process. You **do** need to save your application
+code file!
+
+Hit your `localhost:8080/hello` endpoint again and you will see the updated message:
+`{"message": "hello my friend"}`. If you don't see the updated code double check that you have saved
+your `app.js` or `app.py` file.
+
+```
+curl http://localhost:8080/hello
+{"message": "hello my friend"}
+```

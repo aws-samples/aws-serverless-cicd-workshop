@@ -5,14 +5,12 @@ weight = 15
 +++
 
 Open the SAM template (`sam-app/template.yaml`) in your project and add the `AutoPublishAlias` and
-`DeploymentPreference` blocks into the HelloWorldFunction properties section. The lines to add are
+`DeploymentPreference` blocks into the `HelloWorldFunction` properties section. The lines to add are
 highlighted in the code block below. The line numbers are approximate and may not line up exactly
 with your `template.yaml` file.
 
-{{% notice warning %}}
-The examples below are from a nodejs runtime. Add the `AutoPublishAlias` and
-`DeploymentPreference` blocks but do **not** change the `Runtime` or anything else.
-{{% /notice %}}
+{{< tabs >}}
+{{% tab name="Node" %}}
 
 ```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
 Runtime: nodejs14.x
@@ -23,29 +21,42 @@ Architectures:
   - x86_64
 ```
 
-It should look similar to the screenshot below: **PLEASE CHECK THE CORRECT INDENTATION, IT IS VERY
-IMPORTANT IN YAML FORMAT.**
+{{% /tab %}}
+{{% tab name="python" %}}
 
-![SamCanaryDeployment](/images/screenshot-canary-sam.png)
+```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
+Runtime: python3.7
+AutoPublishAlias: live
+DeploymentPreference:
+  Type: Canary10Percent5Minutes
+Architectures:
+  - x86_64
+```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Deployment Preference Types
 
-For this workshop, we are using the _Canary10Percent5Minutes_ strategy, which means that traffic is
+For this workshop, we are using the `Canary10Percent5Minutes` strategy, which means that traffic is
 shifted in two increments. In the first increment, only 10% of the traffic is shifted to the new
 Lambda version, and after 5 minutes, the remaining 90% is shifted. There are other deployment
 strategies you can choose in CodeDeploy:
 
-- Canary10Percent30Minutes
-- Canary10Percent5Minutes
-- Canary10Percent10Minutes
-- Canary10Percent15Minutes
-- Linear10PercentEvery10Minutes
-- Linear10PercentEvery1Minute
-- Linear10PercentEvery2Minutes
-- Linear10PercentEvery3Minutes
-- AllAtOnce
+- `AllAtOnce`
+- `Canary10Percent5Minutes`
+- `Canary10Percent10Minutes`
+- `Canary10Percent15Minutes`
+- `Canary10Percent30Minutes`
+- `Linear10PercentEvery1Minute`
+- `Linear10PercentEvery2Minutes`
+- `Linear10PercentEvery3Minutes`
+- `Linear10PercentEvery10Minutes`
 
-The _Linear_ strategy means that traffic is shifted in equal increments with an equal number of time interval between each increment.
+The `Linear` strategy means that traffic is shifted in batches every `X` minutes. For example,
+`Linear10PercentEvery10Minutes` will shift an additional 10% of traffic every 10 minutes. The entire
+deployment would then take approximately 10 minutes (more likely closer to 9 since the first batch is
+shifted when the deployment begins).
 
 ### Validate the SAM template
 
@@ -60,48 +71,14 @@ If the template is correct, you will see `template.yaml is a valid SAM Template`
 error, then you likely have an indentation issue on the YAML file. Double check and make sure it
 matches the screenshot shown above.
 
-### Make a code change
-
-AWS SAM will not deploy anything when your code hasn't changed. Since our pipeline is using AWS SAM
-as the deployment tool we need to make some changes to the application.
-
-Change the message in your Lambda function's response code `"I'm using canary deployments"`.
-Remember to update the unit tests too!
-
-{{< tabs >}}
-{{% tab name="Node" %}}
-
-```javascript
-response = {
-  statusCode: 200,
-  body: JSON.stringify({
-    message: "I'm using canary deployments",
-  }),
-}
-```
-
-{{% /tab %}}
-
-{{% tab name="python" %}}
-
-```python
-return {
-    "statusCode": 200,
-    "body": json.dumps({
-        "message": "I'm using canary deployments",
-    }),
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### Push the changes
 
 In the terminal, run the following commands from the root directory of your `sam-app` project.
 
 ```
 git add .
-git commit -m "Canary deployments with SAM"
+git commit -m "Add Canary deployment configuration to SAM"
 git push
 ```
+
+#### Next, we'll make a code change and see how CodeDeploy gradually shifts traffic.

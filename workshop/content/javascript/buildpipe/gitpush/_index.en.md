@@ -16,23 +16,6 @@ git add .
 git commit -m "Initial commit"
 ```
 
-Example output:
-
-```text
-[main (root-commit) 7670f17] Initial commit
- 10 files changed, 2487 insertions(+)
- create mode 100644 .gitignore
- create mode 100644 README.md
- create mode 100644 events/event.json
- create mode 100644 hello-world/.npmignore
- create mode 100644 hello-world/app.js
- create mode 100644 hello-world/package-lock.json
- create mode 100644 hello-world/package.json
- create mode 100644 hello-world/tests/unit/test-handler.js
- create mode 100644 samconfig.toml
- create mode 100644 template.yaml
-```
-
 ### Push the code
 
 Add your CodeCommit repository URL as a _remote_ on your local git project.

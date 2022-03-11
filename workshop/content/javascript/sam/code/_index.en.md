@@ -8,9 +8,15 @@ weight = 15
 If you consider yourself an expert using Lambda functions, you can probably skip this page.
 {{% /notice%}}
 
-Let's take a look at the code of the Hello World Lambda function. Open the file `app.js` under the
-`hello-world` folder. **Note** that your function may have additional commented out code, those
-lines have been removed from the following example for clarity:
+Let's take a look at the code of the Hello World Lambda function.
+
+**Note** that your function may have additional commented out code, those lines have been removed
+from the following example for clarity.
+
+{{< tabs >}}
+{{% tab name="Node" %}}
+
+`hello-world/app.js`
 
 ```js
 let response
@@ -32,12 +38,35 @@ exports.lambdaHandler = async (event, context) => {
 }
 ```
 
+{{% /tab %}}
+
+{{% tab name="python" %}}
+
+`hello_world/app.py`
+
+```python
+import json
+
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "body": json.dumps({
+            "message": "hello world",
+        }),
+    }
+
+```
+
+{{% /tab %}}
+
+{{< /tabs >}}
+
 ### The Lambda handler
 
 The handler is the method in your Lambda function that processes events. When you invoke a function,
-the runtime runs the handler method. When the handler exits or returns a response, it becomes
-available to handle another event. In this case, the lambda handler is the `lambdaHandler` function,
-as specified in the SAM `template.yaml`.
+the runtime runs the handler method. When your function exits or returns a response, it becomes
+available to handle another event. You can change the name or location of your handler function via
+the `CodeUri` and `Handler` keys in the SAM `template.yaml` file.
 
 {{% notice tip %}}
 Because the Lambda handler is executed on every invocation, a best practice is to place code that
@@ -61,5 +90,6 @@ the remaining execution time for the function.
 
 #### Handler Response
 
-API Gateway expects the handler to return a response object that contains _statusCode_ and _body_,
-but it can also contain optional _headers_.
+API Gateway expects the handler to return a response object that contains `statusCode` and `body`,
+but it can also contain optional `headers`. You can read more about the response format in the
+[Lambda with API Gateway integration documentation](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html#apigateway-types-transforms).

@@ -320,11 +320,10 @@ launching the `codepipeline.yaml` CI/CD template.
 sam deploy -t codepipeline.yaml --stack-name sam-app-pipeline --capabilities=CAPABILITY_IAM
 ```
 
-This can take a couple of minutes to complete. You can optionally open the CloudFormation console to
-watch the progress of this new stack. Eventually the stack will complete and you can see the final
-AWS resources it created.
+**This will take a few minutes to complete, so be patient!** You can optionally open the
+CloudFormation console to watch the progress of this new stack. Eventually the stack will complete
+and you can see the final AWS resources it created.
 
 ![](/images/chapter4-pipelines/cloudformation-sam-app-pipeline.png)
 
-Navigate to the next section to see how your new CI/CD pipeline deploys your serverless application
-to the `dev` and `prod` stages.
+#### Navigate to the next section to see how your new CI/CD pipeline deploys your serverless application to the `dev` and `prod` stages.

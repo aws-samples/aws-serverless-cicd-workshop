@@ -22,17 +22,16 @@ curl -s https://cicd.serverlessworkshops.io/assets/bootstrap.sh | bash
 There will be a lot of text output as the script updates system packages, the `aws-cli` and
 `aws-sam`. At the end you should see output which looks similar to below.
 
-
 ![BootstrapScreenshot](/images/screenshot-bootstrap.png)
 
 ### Verify the new version
 
 {{% notice note %}}
-Verify that you have AWS SAM version 1.33.0 or greater installed.
+Verify that you have AWS SAM version 1.40.0 or greater installed.
 {{% /notice %}}
 
 ```terminal
 sam --version
 ```
 
-If you see anything less than `1.33.0`, stop and ensure the `bootstrap.sh` script completed successfully.
+If you see anything less than `1.40.0`, stop and ensure the `bootstrap.sh` script completed successfully.
