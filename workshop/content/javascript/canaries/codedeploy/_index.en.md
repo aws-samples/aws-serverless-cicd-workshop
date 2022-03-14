@@ -93,65 +93,62 @@ canary deployment of the stage you named `sam-app-dev`. Start up a watcher which
 API's message every second. By doing this you will notice when traffic shifting starts and
 completes.
 
-First, get the HTTP endpoint of your dev stage. In a terminal on your Cloud9 enviroment run the
+First, get the `https` endpoint of your dev stage. In a terminal on your Cloud9 enviroment run the
 following command.
 
 ```bash
-aws cloudformation describe-stacks --stack-name sam-app-dev  --query "Stacks[].Outputs[].[OutputKey,OutputValue]" --output table
+aws cloudformation describe-stacks --stack-name sam-app-dev  | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))'
 ```
 
-```text
------------------------------------------------------------------------------------------------------------------------------
-|                                                      DescribeStacks                                                       |
-+---------------------------+-----------------------------------------------------------------------------------------------+
-|  HelloWorldFunctionIamRole|  arn:aws:iam::123456789012:role/sam-app-dev-HelloWorldFunctionRole-T01H28UIDIAP               |
-|  HelloWorldApi            |  https://123123123.execute-api.us-east-2.amazonaws.com/Prod/hello/                           |
-|  HelloWorldFunction       |  arn:aws:lambda:us-east-2:123456789012:function:sam-app-dev-HelloWorldFunction-YHGUbkNMLd4s   |
-+---------------------------+-----------------------------------------------------------------------------------------------+
-```
-
-Copy the `HelloWorldApi` value and run the following command. This will hit your API endpoint every
-second and print the return value to the screen and append it to the `outputs.txt` file. You can run
-this from anywhere.
+Copy the url returned by the previous command run the following `watch` command. This will hit your
+API endpoint every second and print the return value to the screen. This command will also append
+the output to the `outputs.txt` file. You can run this command from any directory.
 
 ```bash
 watch -n 1 "curl -s https://123123123.execute-api.us-east-2.amazonaws.com/Prod/hello/ | jq '.message' 2>&1 | tee -a outputs.txt"
 ```
 
-You should see `Hello my friend` in the terminal and that message appended to the `outputs.txt`
-file. Now that your script it logging API output turn your attendtion to your CodePipeline.
+You should see `Hello my friend` in the terminal. Now that your script is logging the API output turn
+your attendtion to your CodePipeline.
 
-Wait for your pipeline to get to the `DeployTest`. Once you see it the blue `In Progress` status
-navigate to the CodeDeploy.
+Wait for your pipeline to get to the `DeployTest` stage. Once you see it turn blue with
+the `In Progress` status navigate to the CodeDeploy console.
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-00.png)
 
 In the CodeDeploy console click on `Deployments`. You should see your deployment `In progress`. If
-you do not see a deployment, click the refresh icon. Click on the Deployment to see the details.
+you do not see a deployment, click the refresh icon. Click on the Deployment Id to see the details.
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-0.png)
 
-The deployment status shows that 10% of the traffic has been shifted to the new version (aka The
+The deployment status shows that 10% of the traffic has been shifted to the new version (the
 Canary). CodeDeploy will hold the remaining percentage until the specified time interval has
-ellapsed, in this case we specified the interval to be 5 minutes.
+ellapsed. In this case we specified the interval to be 5 minutes.
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-1.png)
 
 When you are in this stage, take a look at your terminal where you started the `watch` command. You
 will see the message occasionally flash to `I'm using canary deployments`.
 
-Shortly after the 5 minutes, the remaining traffic should be shifted to the new version:
+After five minutes CodeDeploy will shift the remaining traffic to the new version and the deployment
+will be done:
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-2.png)
 
 In the terminal where you ran the `watch` command, type `Ctrl-C` to stop. Count up the number of
-messages to convince yourself that the traffic was shifted gradually.
+messages for each `message` string to validate the traffic was shifted gradually. Of course the
+ratio of new to old return messages depends on when you started and stopped the `watch` command.
 
 ```bash
 sort outputs.txt  | uniq -c
+228 "hello my friend"
+ 84 "I'm using canary deployments"
 ```
 
-Of course the ratio of new to old return messages depends on when you started and stopped the
-`watch` command.
+You can also see the sequence of return values by opening `outputs.txt`.
+
+```bash
+cat outputs.txt
+```
 
 #### Now that canaries are enabled, let's setup automated rollbacks when your code throws errors.

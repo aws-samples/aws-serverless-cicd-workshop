@@ -6,12 +6,13 @@ weight = 25
 
 Canary deployments are considerably more successful if the code is being monitored during the
 deployment. You can configure CodeDeploy to automatically roll back the deployment if a specified
-CloudWatch metric has breached the alarm threshold. Common metrics to monitor are Lambda Invocation
+CloudWatch metric has breached a threshold. Common metrics to monitor are Lambda Invocation
 errors or Invocation Duration (latency), for example.
 
 ### Define a CloudWatch Alarm
 
-Add the following alarm definition to the `template.yaml` file in the _Resources_ section after the _HelloWorldFunction_ definition.
+Add the following alarm definition to the `template.yaml` file in the `Resources` section after the
+`HelloWorldFunction` definition.
 
 ```yaml
 CanaryErrorsAlarm:
@@ -34,22 +35,26 @@ CanaryErrorsAlarm:
         Value: !GetAtt HelloWorldFunction.Version.Version
 ```
 
-Change the `DeploymentPreference` section of the `HelloWorldFunction`
-definition. You will configure the `dev` stage to use the `AllAtOnce` deployment strategy and `prod` to
-use the canary method. This will make your deployments for `dev` faster and show you how to configure your SAM
-template using CloudFormation Conditions.
+### Enable canary and alarm for production
+
+Alarms and canaries are great for our production deployment. You may not want or need to use canary
+deployments for non-production environments. Using an `AllAtOnce` strategy for our development stage will
+make deployments faster. Let's configure our serverless application to use a canary deployment and
+the new CloudWatch alarm only for the `sam-app-prod` stage using a CloudFormation `Condition`.
+
+First, create a `IsProduction` Condition statement after the `Globals` section near the top of `template.yaml`.
+
+```yaml
+Conditions:
+  IsProduction: !Equals [!Ref "AWS::StackName", "sam-app-prod"]
+```
+
+Next, change the `DeploymentPreference` to use this new `IsProduction` condition.
 
 ```yaml
 DeploymentPreference:
   Type: !If [IsProduction, "Canary10Percent5Minutes", "AllAtOnce"]
   Alarms: !If [IsProduction, [!Ref CanaryErrorsAlarm], []]
-```
-
-You will also need to add the `IsProduction` Condition statement after the `Globals` section.
-
-```yaml
-Conditions:
-  IsProduction: !Equals [!Ref "AWS::StackName", "sam-app-prod"]
 ```
 
 Your `template.yaml` should look like this:
@@ -133,3 +138,5 @@ sam validate
 If the template is correct, you will see `template.yaml is a valid SAM Template`. If you see an
 error, then you likely have an indentation issue on the YAML file. Double check and make sure it
 matches the screenshot shown above.
+
+#### Don't commit and push this just yet. In the next section we'll see these changes in action.
