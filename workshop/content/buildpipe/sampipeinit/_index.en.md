@@ -6,7 +6,7 @@ weight = 21
 
 {{% notice info %}}
 If you have **not** run the `boostrap.sh` script go to [Getting started]( {{< relref
-"javascript/setup/bootstrap#boostrap-script" >}} ) section.
+"setup/bootstrap#boostrap-script" >}} ) section.
 {{% /notice %}}
 
 There are three distinct steps with SAM Pipelines and AWS CodePipeline.
