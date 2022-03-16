@@ -6,7 +6,7 @@ weight = 10
 
 The primary tool this workshop relies on is the [AWS Serverless Application Model (SAM)](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html). However, we
 need a newer version than what Cloud9 has pre-installed. The version we are targetting is **SAM CLI,
-version 1.33.0 or greater**.
+version 1.35.0 or greater**.
 
 ### Bootstrap Script
 
@@ -27,7 +27,8 @@ There will be a lot of text output as the script updates system packages, the `a
 ### Verify the new version
 
 {{% notice note %}}
-Verify that you have AWS SAM version 1.40.0 or greater installed.
+As of this writing AWS SAM is at version 1.40.0. After your bootstrap script has complted verify
+that you have AWS SAM version 1.40.0 or greater installed.
 {{% /notice %}}
 
 ```terminal

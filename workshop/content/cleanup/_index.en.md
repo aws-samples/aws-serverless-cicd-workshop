@@ -8,6 +8,7 @@ pre = "<b>6. </b>"
 
 # Cleanup
 
-In this chapter you will learn how to cleanup the resources created in this workshop to avoid any undesired charges in your AWS bill. 
+In this chapter you will learn how to cleanup the resources created in this workshop to avoid any
+undesired charges in your AWS bill.
 
 ![Cleaned Environment](/images/cleanup.svg)

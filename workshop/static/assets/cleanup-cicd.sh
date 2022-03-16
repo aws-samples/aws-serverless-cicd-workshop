@@ -1,18 +1,3 @@
-+++
-title = "Delete CFN Stacks"
-date =  2020-07-06T18:10:22-04:00
-weight = 6
-+++
-
-All of the resources deployed in this workshop are via CloudFormation. Run the following script
-which will delete all of the CloudFormation stacks.
-
-[Download the script here](/assets/cleanup-cicd.sh) and run it on your Cloud9 instance or local
-computer. Note that this is a `bash` script and requires a terminal. This should work without
-modification when using Cloud9. If you are using your own computer and personal AWS account you may
-need to make adjustments.
-
-```bash
 #!/bin/bash
 
 ROLE_NAME=Cloud9-MyAwesomeAdmin
@@ -55,8 +40,3 @@ done
 ## Delete the temporary Admin role
 aws iam detach-role-policy --role-name "$ROLE_NAME" --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 aws iam delete-role --role-name "$ROLE_NAME"
-```
-
-```
-bash cleanup-cicd.sh
-```
