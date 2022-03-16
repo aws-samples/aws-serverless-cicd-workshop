@@ -7,10 +7,14 @@ weight = 6
 All of the resources deployed in this workshop are via CloudFormation. Run the following script
 which will delete all of the CloudFormation stacks.
 
-[Download the script here](/assets/cleanup-cicd.sh) and run it on your Cloud9 instance or local
+```bash
+curl -s https://cicd.serverlessworkshops.io/assets/cleanup-cicd.sh | bash
+```
+
+You may also manually [download the script](/assets/cleanup-cicd.sh) and run it on your Cloud9 instance or local
 computer. Note that this is a `bash` script and requires a terminal. This should work without
 modification when using Cloud9. If you are using your own computer and personal AWS account you may
-need to make adjustments.
+need to make adjustments. The cleanup script in its entirety is shown below.
 
 ```bash
 #!/bin/bash
@@ -55,8 +59,4 @@ done
 ## Delete the temporary Admin role
 aws iam detach-role-policy --role-name "$ROLE_NAME" --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 aws iam delete-role --role-name "$ROLE_NAME"
-```
-
-```
-bash cleanup-cicd.sh
 ```
