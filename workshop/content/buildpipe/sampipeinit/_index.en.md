@@ -29,8 +29,8 @@ cd ~/environment/sam-app
 sam pipeline init --bootstrap
 ```
 
-A list of the questions and required anwers for this workshop is enumerated below. Note that numbers
-may be different when choosing from an enumerated list. The full output and answers are provided
+A list of the questions and required anwers for this workshop is enumerated below. **Note that numbers
+may be different when choosing from an enumerated list.** The full output and answers are provided
 below as an additional reference.
 
 1. Select a pipeline template to get started: `AWS Quick Start Pipeline Templates` (1)

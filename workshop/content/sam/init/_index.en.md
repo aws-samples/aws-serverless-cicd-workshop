@@ -59,10 +59,14 @@ Which runtime would you like to use?
         14 - ruby2.7
 ```
 
-- Node: `nodejs14.x`
-- Python: `python3.7`
-- Java: `python3.7`
-- C#: `dotnet6`
+{{< tabs >}}
+{{% tab name="Node" %}}
+`nodejs14.x`
+{{% /tab %}}
+{{% tab name="python" %}}
+`python3.7`
+{{% /tab %}}
+{{% /tabs %}}
 
 Select `Zip` as the package type and leave `sam-app` as the `Project name`.
 

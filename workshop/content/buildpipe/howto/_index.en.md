@@ -6,7 +6,7 @@ weight = 20
 
 The best way to automate the creation of CI/CD pipelines is by provisioning them programmatically
 using Infrastructure as Code (IaC). This is useful in a microservices environment, where you may have
-a pipeline per microservice. In such environments there could be dozens, or even hundreds,
+a pipeline per service. In such environments there could be dozens, or even hundreds,
 of CI/CD pipelines. Having an automated way to create those CI/CD pipelines enables developers move quickly
 without the burden of building them manually. SAM Pipelines, which you'll be using, is a tool to
 ease that burden.
@@ -30,8 +30,6 @@ test our serverless application locally. AWS SAM is a toolset meant to increase 
 developing serverless applications and provides capabilities such as `sam local` that are not
 present in other IaC tools.
 
-In this section you will be using another feature from SAM to create a CI/CD pipeline.
-
 ### Introducing AWS SAM Pipelines
 
 [**SAM Pipelines**](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-pipeline-bootstrap.html)
@@ -49,14 +47,14 @@ As of this writing, SAM Pipelines can bootstrap CI/CD pipelines for the followin
 {{% notice note %}}
 SAM Pipelines is a feature which bootstraps CI/CD pipelines for the listed providers. This saves
 saves you the work of setting them up from scratch. However, you can use SAM as a deployment tool
-with _any_ CI/CD provider. You use the `sam build` and `sam deploy` commands to build and deploy SAM
+with _any_ CI/CD provider. You use various `sam` commands to build and deploy SAM
 applications regardless of your CI/CD toolset. Furthermore, the configurations SAM Pipelines creates
-are a convienence to get you started quickly. You are free to edit these CI/CD configuration
+are a convienence to get you started. You are free to edit these CI/CD configuration
 files after SAM creates them.
 {{% /notice %}}
 
 SAM Pipelines creates appropriate configuration files for your CI/CD provider of choice. For
-exampoe, when using
+example, when using
 GitHub Actions SAM will synthesize a `.github/workflows/pipeline.yaml` file. This file defines your CI/CD
 pipeline using GitHub Actions. In this workshop we will be using AWS CodePipeline. As you will soon
 see, SAM creates multiple files, one of which is a CloudFormation template named
@@ -68,11 +66,11 @@ serverless application automatically.
 At the end of this section we will have a self-updating CI/CD pipeline using CodePipeline that will
 perform the following steps.
 
-1. Trigger after a commit to the `main` branch
-1. Look for changes to the pipeline itself, and self-update using CloudFormation
-1. Run unit tests via CodeBuild
-1. Build and package the application code via CodeBuild
-1. Deploy to a dev/test environment
-1. Deploy to a production environment
+1. Trigger after a commit to the `main` branch (`Source` in the screenshot below)
+1. Look for changes to the pipeline itself, and self-update using CloudFormation (`UpdtatePipeline`)
+1. Run unit tests via CodeBuild (`UnitTest`)
+1. Build and package the application code via CodeBuild (`BuildAndPackage`)
+1. Deploy to a dev/test environment (`DeployTest`)
+1. Deploy to a production environment (`DeployProd`)
 
 ![](/images/sam-pipeline-architecture.png)

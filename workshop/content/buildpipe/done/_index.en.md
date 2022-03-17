@@ -34,7 +34,19 @@ CodeBuild created the `sam-app-dev` stack during the `DeployTest` Pipeline step.
 CodeBuild created `sam-app-prod` during the `DeployProd` step.
 
 Look at the `Outputs` tab for each of these CloudFormation stacks to see the API endpoints. You can
-use `curl` or other methods to verify the functionality of your two new APIs.
+use `curl` or other methods to verify the functionality of your two new APIs. You can export the URL
+endpoints for both stages in a terminal.
+
+```bash
+export DEV_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-dev | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')
+export PROD_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-prod | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')
+
+echo "Dev endpoint: $DEV_ENDPOINT"
+echo "Prod endpoint: $PROD_ENDPOINT"
+
+curl -s $DEV_ENDPOINT
+curl -s $PROD_ENDPOINT
+```
 
 ![API endpoints](/images/chapter4-pipelines/sam-app-dev-cfn-outputs.png)
 

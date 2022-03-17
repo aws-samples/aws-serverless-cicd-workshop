@@ -20,7 +20,7 @@ Remember to update the unit tests!
 
 `~/environment/sam-app/hello-world/app.js`
 
-```javascript
+```javascript {hl_lines=["4"]}
 response = {
   statusCode: 200,
   body: JSON.stringify({
@@ -31,7 +31,7 @@ response = {
 
 `~/environment/node-sam-app/hello-world/tests/unit/test-handler.js `
 
-```javascript
+```javascript {hl_lines=["12"]}
 describe("Tests index", function () {
   it("verifies successful response", async () => {
     const result = await app.lambdaHandler(event, context)
@@ -54,7 +54,7 @@ describe("Tests index", function () {
 
 `~/environment/sam-app/hello_world/app.py `
 
-```python
+```python {hl_lines=["4"]}
 return {
     "statusCode": 200,
     "body": json.dumps({
@@ -65,7 +65,7 @@ return {
 
 `~/environment/sam-app/tests/unit/test_handler.py`
 
-```python
+```python {hl_lines=["7"]}
 def test_lambda_handler(apigw_event, mocker):
     ret = app.lambda_handler(apigw_event, "")
     data = json.loads(ret["body"])
@@ -96,16 +96,21 @@ completes.
 First, get the `https` endpoint of your dev stage. In a terminal on your Cloud9 enviroment run the
 following command.
 
+{{%expand "Export the HTTP endpoints if you haven't already" %}}
+
 ```bash
-aws cloudformation describe-stacks --stack-name sam-app-dev  | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))'
+export DEV_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-dev | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')
+export PROD_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-prod | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')
 ```
 
-Copy the url returned by the previous command run the following `watch` command. This will hit your
-API endpoint every second and print the return value to the screen. This command will also append
-the output to the `outputs.txt` file. You can run this command from any directory.
+{{% /expand%}}
+
+Hit your `dev` API endpoint every second and print the return value to the screen. This command will
+also append the output to the `outputs.txt` file that you can inspect later. You can run this
+command from any directory.
 
 ```bash
-watch -n 1 "curl -s https://123123123.execute-api.us-east-2.amazonaws.com/Prod/hello/ | jq '.message' 2>&1 | tee -a outputs.txt"
+watch -n 1 "curl -s $DEV_ENDPOINT | jq '.message' 2>&1 | tee -a outputs.txt"
 ```
 
 You should see `Hello my friend` in the terminal. Now that your script is logging the API output turn
@@ -117,7 +122,8 @@ the `In Progress` status navigate to the CodeDeploy console.
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-00.png)
 
 In the CodeDeploy console click on `Deployments`. You should see your deployment `In progress`. If
-you do not see a deployment, click the refresh icon. Click on the Deployment Id to see the details.
+you do not see a deployment, click the refresh icon. **This may take a few minutes to show up!**
+Click on the Deployment Id to see the details.
 
 ![CanaryCodeDeploy](/images/screenshot-canary-codedeploy-0.png)
 
@@ -129,6 +135,8 @@ ellapsed. In this case we specified the interval to be 5 minutes.
 
 When you are in this stage, take a look at your terminal where you started the `watch` command. You
 will see the message occasionally flash to `I'm using canary deployments`.
+
+![CanaryDeploymentMessages](/images/code-pipeline-canary.gif)
 
 After five minutes CodeDeploy will shift the remaining traffic to the new version and the deployment
 will be done:

@@ -71,7 +71,7 @@ exports.lambdaHandler = async (event, context) => {
 
 `~/environment/sam-app/hello_world/app.py`
 
-```python
+```python {hl_lines=["3-4"]}
 def lambda_handler(event, context):
 
     if True:
@@ -100,6 +100,7 @@ def test_lambda_handler(apigw_event, mocker):
 In the terminal, run the following commands from the root directory of your `sam-app` project.
 
 ```
+cd ~/environment/sam-app
 git add .
 git commit -m "Breaking the lambda function on purpose"
 git push
@@ -111,13 +112,14 @@ Once you've pushed the code you will need to generate traffic on your production
 endpoint. **If you don't generate traffic for your Lambda function the CloudWatch alarm will not be
 triggered!**
 
-Fetch the API Gateway endpoint for your production deployment. This command will export the
-production URL to the environment variable `PROD_ENDPOINT`.
+{{%expand "If you haven't exported the PROD_ENDPOINT, run the following command." %}}
 
 ```bash
 export PROD_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-prod | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')
 echo "$PROD_ENDPOINT"
 ```
+
+{{% /expand%}}
 
 Start a `watch` command which will hit this endpoint twice per second.
 

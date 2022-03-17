@@ -4,14 +4,12 @@ date = 2019-10-02T15:21:26-07:00
 weight = 15
 +++
 
-{{% notice note %}}
-If you consider yourself an expert using Lambda functions, you can probably skip this page.
-{{% /notice%}}
-
 Let's take a look at the code of the Hello World Lambda function.
 
-**Note** that your function may have additional commented out code, those lines have been removed
-from the following example for clarity.
+{{% notice note %}}
+Your function may have additional comments. Those lines have been removed from the following example
+for clarity.
+{{% /notice%}}
 
 {{< tabs >}}
 {{% tab name="Node" %}}

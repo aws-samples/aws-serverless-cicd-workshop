@@ -12,6 +12,8 @@ with your `template.yaml` file.
 {{< tabs >}}
 {{% tab name="Node" %}}
 
+`~environment/sam-app/template.yaml`
+
 ```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
 Runtime: nodejs14.x
 AutoPublishAlias: live
@@ -23,6 +25,8 @@ Architectures:
 
 {{% /tab %}}
 {{% tab name="python" %}}
+
+`~environment/sam-app/template.yaml`
 
 ```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
 Runtime: python3.7

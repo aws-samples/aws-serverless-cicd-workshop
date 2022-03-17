@@ -13,7 +13,7 @@ simple change. Change the response message to return `hello my friend` instead o
 
 `~environment/sam-app/hello-world/app.js`
 
-```js
+```js {hl_lines=["8"]}
 let response
 
 exports.lambdaHandler = async (event, context) => {
@@ -37,7 +37,7 @@ exports.lambdaHandler = async (event, context) => {
 {{% tab name="python" %}}
 `~environment/sam-app/hello_world/app.py`
 
-```python
+```python {hl_lines=["7"]}
 import json
 
 def lambda_handler(event, context):

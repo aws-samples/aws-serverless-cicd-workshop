@@ -50,6 +50,10 @@ Branch 'main' set up to track remote branch 'main' from 'origin'.
 
 ### Verify in CodeCommit
 
-Navigate to the [AWS CodeCommit console](https://console.aws.amazon.com/codesuite/codecommit/home), find your _sam-app_ repository and click on it to view its contents. Make sure your code is there. You should see a screen like the following:
+Navigate to the [AWS CodeCommit console](https://console.aws.amazon.com/codesuite/codecommit/home),
+find your `sam-app` repository and click on it to view its contents. Make sure your code is there.
+You should see a screen like the following:
 
 ![VerifyCodeCommit](/images/screenshot-verify-codecommit.png)
+
+#### Now that you repo has your code let's start building a CI/CD pipeline!
