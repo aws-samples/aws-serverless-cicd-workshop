@@ -50,18 +50,20 @@ Which runtime would you like to use?
         5 - java11
         6 - java8.al2
         7 - java8
-        8 - nodejs14.x
-        9 - nodejs12.x
-        10 - python3.9
-        11 - python3.8
-        12 - python3.7
-        13 - python3.6
-        14 - ruby2.7
+        8 - nodejs16.x
+        9 - nodejs14.x
+        10 - nodejs12.x
+        11 - python3.9
+        12 - python3.8
+        13 - python3.7
+        14 - python3.6
+        15 - ruby2.7
+        16 - rust (provided.al2)
 ```
 
 {{< tabs >}}
 {{% tab name="Node" %}}
-`nodejs14.x`
+`nodejs16.x`
 {{% /tab %}}
 {{% tab name="python" %}}
 `python3.7`
