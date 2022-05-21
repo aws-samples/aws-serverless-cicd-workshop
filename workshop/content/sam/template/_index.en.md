@@ -29,7 +29,7 @@ Resources:
     Properties:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       Events:
         HelloWorld:
           Type: Api
@@ -94,7 +94,7 @@ HelloWorldFunction:
   Properties:
     CodeUri: hello-world/
     Handler: app.lambdaHandler
-    Runtime: nodejs14.x
+    Runtime: nodejs16.x
     Events:
       HelloWorld:
         Type: Api
@@ -142,7 +142,7 @@ HelloWorldFunction:
   Properties:
     CodeUri: hello-world/
     Handler: app.lambdaHandler
-    Runtime: nodejs14.x
+    Runtime: nodejs16.x
     Events:
       HelloWorld:
         Type: Api

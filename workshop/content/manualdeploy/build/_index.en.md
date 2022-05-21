@@ -19,7 +19,7 @@ sam build
 {{% tab name="Node" %}}
 
 ```text
-Building codeuri: /home/ec2-user/environment/sam-app/hello-world runtime: nodejs14.x metadata: {} architecture: x86_64 functions: ['HelloWorldFunction']
+Building codeuri: /home/ec2-user/environment/sam-app/hello-world runtime: nodejs16.x metadata: {} architecture: x86_64 functions: ['HelloWorldFunction']
 Running NodejsNpmBuilder:NpmPack
 Running NodejsNpmBuilder:CopyNpmrc
 Running NodejsNpmBuilder:CopySource

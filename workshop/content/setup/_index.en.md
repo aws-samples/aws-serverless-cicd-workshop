@@ -28,7 +28,7 @@ If you prefer to run the workshop from your local computer without using Cloud9,
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
   - Required to simulate the Lambda runtime locally.
-- [SAM CLI v1.35.0+](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
+- [SAM CLI v1.50.0+](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
   - To run functions locally, create a pipeline and package/deploy SAM apps manually.
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
   - To create resources in your AWS account.
