@@ -50,18 +50,20 @@ Which runtime would you like to use?
         5 - java11
         6 - java8.al2
         7 - java8
-        8 - nodejs14.x
-        9 - nodejs12.x
-        10 - python3.9
-        11 - python3.8
-        12 - python3.7
-        13 - python3.6
-        14 - ruby2.7
+        8 - nodejs16.x
+        9 - nodejs14.x
+        10 - nodejs12.x
+        11 - python3.9
+        12 - python3.8
+        13 - python3.7
+        14 - python3.6
+        15 - ruby2.7
+        16 - rust (provided.al2)
 ```
 
 {{< tabs >}}
 {{% tab name="Node" %}}
-`nodejs14.x`
+`nodejs16.x`
 {{% /tab %}}
 {{% tab name="python" %}}
 `python3.7`
@@ -69,6 +71,31 @@ Which runtime would you like to use?
 {{% /tabs %}}
 
 Select `Zip` as the package type and leave `sam-app` as the `Project name`.
+
+{{< tabs >}}
+{{% tab name="Node" %}}
+
+```text
+What package type would you like to use?
+        1 - Zip
+        2 - Image
+Package type: 1
+
+Based on your selections, the only dependency manager available is npm.
+We will proceed copying the template using npm.
+
+Select your starter template
+        1 - Hello World Example
+        2 - Hello World Example TypeScript
+Template: 1
+
+Would you like to enable X-Ray tracing on the function(s) in your application?  [y/N]: n
+
+Project name [sam-app]:
+```
+
+{{% /tab %}}
+{{% tab name="python" %}}
 
 ```text
 What package type would you like to use?
@@ -81,6 +108,9 @@ We will proceed copying the template using pip.
 
 Project name [sam-app]:
 ```
+
+{{% /tab %}}
+{{% /tabs %}}
 
 {{% notice tip %}}
 This command supports cookiecutter templates, so you could write your own custom scaffolding

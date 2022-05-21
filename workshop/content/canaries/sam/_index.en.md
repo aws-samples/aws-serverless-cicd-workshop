@@ -15,7 +15,7 @@ with your `template.yaml` file.
 `~environment/sam-app/template.yaml`
 
 ```yaml {linenos=true,hl_lines=["2-4"],linenostart=20}
-Runtime: nodejs14.x
+Runtime: nodejs16.x
 AutoPublishAlias: live
 DeploymentPreference:
   Type: Canary10Percent5Minutes
