@@ -6,7 +6,7 @@ weight = 10
 
 The primary tool this workshop relies on is the [AWS Serverless Application Model (SAM)](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html). However, we
 need a newer version than what Cloud9 has pre-installed. The version we are targetting is **SAM CLI,
-version 1.35.0 or greater**.
+version 1.50.0 or greater**.
 
 ### Bootstrap Script
 
