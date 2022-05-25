@@ -46,7 +46,7 @@ As of this writing, SAM Pipelines can bootstrap CI/CD pipelines for the followin
 
 {{% notice note %}}
 SAM Pipelines is a feature which bootstraps CI/CD pipelines for the listed providers. This saves
-saves you the work of setting them up from scratch. However, you can use SAM as a deployment tool
+you the work of setting them up from scratch. However, you can use SAM as a deployment tool
 with _any_ CI/CD provider. You use various `sam` commands to build and deploy SAM
 applications regardless of your CI/CD toolset. Furthermore, the configurations SAM Pipelines creates
 are a convienence to get you started. You are free to edit these CI/CD configuration
