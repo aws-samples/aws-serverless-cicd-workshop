@@ -17,4 +17,3 @@ The second artifact that SAM CLI generates during the _package_ phase is the pac
 ![SamPackagedTemplate](/images/screenshot-sam-packaged-template.png)
 
 Notice how the `CodeUri` references the zip file on an S3 bucket, rather than on a local directory. This is how AWS Lambda is able to pull your code at deployment time.
-

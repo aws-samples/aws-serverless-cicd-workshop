@@ -80,7 +80,7 @@ Resources:
     Properties:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
-      Runtime: nodejs14.x
+      Runtime: nodejs16.x
       AutoPublishAlias: live
       DeploymentPreference:
         Type: !If [IsProduction, "Canary10Percent5Minutes", "AllAtOnce"]
