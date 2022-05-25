@@ -9,7 +9,7 @@ weight = 35
 Once the `sam-app-pipeline` CloudFormation stack has completed, you will have a new CodePipeline Pipeline.
 Navigate to the [CodePipeline Console](https://console.aws.amazon.com/codesuite/codepipeline/pipelines).
 You should see a single Pipeline. If you've navigated here soon after deploying the pipeline
-CloudFormation stack, you will see your new Pipeline exeuting its first deployment.
+CloudFormation stack, you will see your new Pipeline executing its first deployment.
 
 ![Pipeline in-progress](/images/chapter4-pipelines/sam-app-pipeline-in-progress.png)
 
