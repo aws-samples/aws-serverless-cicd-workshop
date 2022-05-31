@@ -67,7 +67,7 @@ At the end of this section we will have a self-updating CI/CD pipeline using Cod
 perform the following steps.
 
 1. Trigger after a commit to the `main` branch (`Source` in the screenshot below)
-1. Look for changes to the pipeline itself, and self-update using CloudFormation (`UpdtatePipeline`)
+1. Look for changes to the pipeline itself, and self-update using CloudFormation (`UpdatePipeline`)
 1. Run unit tests via CodeBuild (`UnitTest`)
 1. Build and package the application code via CodeBuild (`BuildAndPackage`)
 1. Deploy to a dev/test environment (`DeployTest`)
