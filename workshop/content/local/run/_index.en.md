@@ -24,7 +24,7 @@ sam local start-api --port 8080
 {{% tab name="python" %}}
 
 ```bash
-cd ~/environment/sam_app
+cd ~/environment/sam-app
 sam local start-api --port 8080
 ```
 
