@@ -1,40 +1,12 @@
-RelativeURLs=true
-CanonifyURLs=true
-languageCode = "en-US"
-defaultContentLanguage = "en"
-
 title = "CI/CD for Serverless Applications"
-theme = "learn"
-metaDataFormat = "yaml"
-defaultContentLanguageInSubdir= true
+baseURL = "https://cicd.serverlessworkshops.io"
+languageCode = "en-us"
 
-uglyurls = true
-sectionPagesMenu = "main"
-pygmentsCodeFences = true
-pygmentsStyle = "monokai"
+theme = "ananke"
+
+DefaultContentLanguage = "en"
+SectionPagesMenu = "main"
 
 [params]
-  editURL = "https://github.com/aws-samples/aws-serverless-cicd-workshop/tree/master/workshop/content/"
-  description = "Building a CI/CD pipeline for Serverless applications"
-  author = "Brian Zambrano <zambb@amazon.com"
-  disableBreadcrumb = false
-  disableNextPrev = false
-  themeVariant = "aws"
-  disableSearch = false
-  disableAssetsBusting = true
-  disableLanguageSwitchingButton = false
-  disableShortcutsTitle = true
-  disableInlineCopyToClipBoard = true
-
-[outputs]
-home = [ "HTML", "RSS", "JSON"]
-
-[blackfriday]
-plainIDAnchors = true
-hrefTargetBlank = true
-
-[Languages]
-[Languages.en]
-title = ""
-weight = 1
-languageName = "English"
+  author = "Brian Zambrano <zambb@amazon.com>"
+  favicon = "https://a0.awsstatic.com/libra-css/images/site/fav/favicon.ico"

@@ -3,7 +3,7 @@ frontend:
   phases:
     build:
       commands:
-        - git clone --depth=1 https://github.com/matcornic/hugo-theme-learn.git workshop/themes/learn
+        - git clone --depth=1 https://github.com/theNewDynamic/gohugo-theme-ananke.git workshop/themes/learn
         - hugo --source workshop --destination ../public --quiet
   artifacts:
     baseDirectory: /public
